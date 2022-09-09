@@ -35,6 +35,8 @@ EXPOSE 80
 CMD ["apache2ctl","-D","FOREGROUND"]
 ```
 
+## Once Image is Built
+
 - **cd** to the destination file from PATH
 
 Run the container with `docker run -d -p 8080:80 webservername`
