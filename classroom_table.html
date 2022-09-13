@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<div>
+<body>
+    <head>
+        <!--The head defines the page title, 
+            sets the viewport to adaptive, 
+            and includes a style guide for elements.-->
+        <title>Class Simulation Diagram</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            td {
+                padding: 7px;
+            }
+            table.center {
+                margin-left: auto; 
+                margin-right: auto;
+                width: auto;
+            }
+            .hasButton {
+                background-color: lightgrey;
+            }
+            .hasButton:hover {
+                background-color: darkgrey;
+            }
+        </style>
+    </head>
+    <!--This table defines the diagram of a class room.-->
+    <table class="center">
+        <tr>
+            <td class="hasButton">Room Entrance:<br>Hand Sanatizer</td>
+            <td rowspan="3">Aisleway</td>
+            <td class="hasButton">Instructor Rectangle:<br>Desk & Lysol</td>
+            <td colspan="2">Student Question Rectangle</td>
+        </tr>
+        <tr>
+            <td class="hasButton">Student Rectangle #1:<br>Desk & Lysol</td>
+            <td class="hasButton">Student Rectangle #2:<br>Desk & Lysol</td>
+            <td rowspan="2">Aisleway</td>
+            <td class="hasButton">Student Rectangle #3:<br>Desk & Lysol</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="hasButton">Student Rectangle #5:<br>Desk & Lysol</td>
+            <td class="hasButton">Student Rectangle #4:<br>Desk & Lysol</td>
+        </tr>
+        <tr>
+            <td colspan="5">Aisleway</td>
+        </tr>
+    </table>
+</body>
+</div>
+<div>
+<body>
+
+</body>
+</div>
