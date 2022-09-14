@@ -2,6 +2,9 @@
 - `ssh team01@ubuntuvm001` in terminal on the UAH CS Network
 - Enter Team password
 
+# Install Docker
+- https://www.linuxtechi.com/install-use-docker-on-ubuntu/
+
 ## Building the Docker Image
 - Ensure "dockerfile" has all proper commands listed and each correct file path for copy.
 
