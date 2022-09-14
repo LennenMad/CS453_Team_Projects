@@ -5,6 +5,13 @@
 # Install Docker
 - https://www.linuxtechi.com/install-use-docker-on-ubuntu/
 
+### Make Docker Sudo Permited
+
+1. `sudo groupadd docker`
+2. `sudo gpasswd -a $USER docker`
+3. `newgrp docker`
+4. Docker should work without `sudo` now
+
 ## Building the Docker Image
 - Ensure "dockerfile" has all proper commands listed and each correct file path for copy.
 
@@ -49,13 +56,6 @@ CMD ["apache2ctl","-D","FOREGROUND"]
 Run the container with `docker run -d -p 8080:80 webservername`
 
 Now the container should be accesible from `localhost:8080/filename.html`
-
-### Make Docker Sudo Permited
-
-1. `sudo groupadd docker`
-2. `sudo gpasswd -a $USER docker`
-3. `newgrp docker`
-4. Docker should work without `sudo` now
 
 ## Useful Commands for Docker
 
