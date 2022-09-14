@@ -1,3 +1,7 @@
+## Accessing the VM
+- `ssh team01@ubuntuvm001` in terminal on the UAH CS Network
+- Enter Team password
+
 ## Building the Docker Image
 - Ensure "dockerfile" has all proper commands listed and each correct file path for copy.
 
