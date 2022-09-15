@@ -68,3 +68,6 @@ Now the container should be accesible from `localhost:8080/filename.html`
 | docker ps | Displays all running containers |
 | docker exec -it CONTAINERNAME /bin/bash | Enters the container from terminal |
 | docker stop CONTAINERNAME | Stops the desired container |
+
+# Testing Webpage
+Run `firefox -P` on the VM to access the firefox GUI if `-X` option was set.
