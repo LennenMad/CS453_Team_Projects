@@ -1,52 +1,52 @@
 <!DOCTYPE html>
+<head>
+    <!--The head defines the page title, 
+        sets the viewport to adaptive, 
+        and includes a style guide for elements.-->
+    <title>Class Simulation Diagram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 7px;
+        }
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+            width: auto;
+        }
+    </style>
+</head>
 <div>
 <body>
-    <head>
-        <!--The head defines the page title, 
-            sets the viewport to adaptive, 
-            and includes a style guide for elements.-->
-        <title>Class Simulation Diagram</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            table, td {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            td {
-                padding: 7px;
-            }
-            table.center {
-                margin-left: auto; 
-                margin-right: auto;
-                width: auto;
-            }
-        </style>
-    </head>
     <!--This table defines the diagram of a class room.-->
     <table class="center">
         <tr>
             <td rowspan="4">
                 Class 1 <br><br><br>
                 Class:
-                <button name="startClass" type="button" value="Start">Start</button>
-                <button name="endClass" type="button" value="End">End</button> <br><br>
+                <button id="startClass" type="button" value="Start">Start</button>
+                <button id="endClass" type="button" value="End">End</button> <br><br>
                 Student:
-                <button name="studentEnter" type="button" value="Enter">Enter</button>
-                <button name="studentExit" type="button" value="Exit">Exit</button>
+                <button id="studentEnter" type="button" value="Enter">Enter</button>
+                <button id="studentExit" type="button" value="Exit">Exit</button>
             </td>
             <td>Room Entrance:<br>
-                <button name="sanitizer" type="button" value="Sanitizer">Sanitizer</button>
+                <button id="sanitizer" type="button" value="Sanitizer">Sanitizer</button>
             </td>
             <td rowspan="3">Aisleway</td>
             <td>Instructor Rectangle:<br>
-                <button type="button">-</button>
-                <button type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeStudent" type="button">-</button>
+                <button name="addStudent" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
             <td colspan="2">Student Question Rectangle<br>
-                <button type="button">-</button>
-                <button type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeStudent" type="button">-</button>
+                <button name="addStudent" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button>
             </td>
         </tr>
@@ -97,3 +97,20 @@
 
 </body>
 </div>
+<script>
+    document.getElementById("sanitizer").addEventListener("click",sanitizerClicked);
+    for (addButton in document.getElementsByName("addStudent")) {
+        addButton.addEventListener("click", addStudentClicked);
+    }
+    document.getElementById("removeStudent").addEventListener("click", removeStudentClicked);
+
+    function sanitizerClicked() {
+        alert("Sanitizer used.");
+    }
+    function addStudentClicked() {
+        alert("Student added.")
+    }
+    function removeStudentClicked() {
+        alert("Student removed.")
+    }
+</script>
