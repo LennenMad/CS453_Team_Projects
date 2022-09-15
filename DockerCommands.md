@@ -1,5 +1,6 @@
 ## Accessing the VM
 - `ssh team01@ubuntuvm001` in terminal on the UAH CS Network
+-   try `ssh -X team01@ubuntuvm001` for gui window
 - Enter Team password
 
 # Install Docker
