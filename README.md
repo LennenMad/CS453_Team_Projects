@@ -10,7 +10,7 @@ Visit page at: https://lennenmad.github.io/CS453_Team_Projects/
 | Clone Repo | y |
 | Install Docker | y |
 | Sudo Docker | y |
-| Create Docker Image | n |
-| Create Container from Image | n |
-| Run Container | n |
+| Create Docker Image | y |
+| Create Container from Image | y |
+| Run Container | y |
 | Access Webpage | n |
