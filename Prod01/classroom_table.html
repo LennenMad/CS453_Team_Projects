@@ -39,34 +39,34 @@
             </td>
             <td rowspan="3">Aisleway</td>
             <td>Instructor Rectangle:<br>
-                <button id="removeStudent" type="button">-</button>
-                <button name="addStudent" type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeInstructor" type="button">-</button>
+                <button id="addInstructor" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
             <td colspan="2">Student Question Rectangle<br>
-                <button id="removeStudent" type="button">-</button>
-                <button name="addStudent" type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeStudentQ" type="button">-</button>
+                <button id="addStudentQ" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button>
             </td>
         </tr>
         <tr>
             <td>Student Rectangle #1:<br>
-                <button type="button">-</button>
-                <button type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeStudent1" type="button">-</button>
+                <button id="addStudent1" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
             <td>Student Rectangle #2:<br>
-                <button type="button">-</button>
-                <button type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeStudent2" type="button">-</button>
+                <button id="addStudent2" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
             <td rowspan="2">Aisleway</td>
             <td>Student Rectangle #3:<br>
-                <button type="button">-</button>
-                <button type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeStudent3" type="button">-</button>
+                <button id="addStudent3" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
@@ -74,14 +74,14 @@
         <tr>
             <td></td>
             <td>Student Rectangle #5:<br>
-                <button type="button">-</button>
-                <button type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeStudent5" type="button">-</button>
+                <button id="addStudent5" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
             <td>Student Rectangle #4:<br>
-                <button type="button">-</button>
-                <button type="button">+</button> &ThickSpace; &ThickSpace;
+                <button id="removeStudent4" type="button">-</button>
+                <button id="addStudent4" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
@@ -98,12 +98,25 @@
 </body>
 </div>
 <script>
-    document.getElementById("sanitizer").addEventListener("click",sanitizerClicked);
-    for (addButton in document.getElementsByName("addStudent")) {
-        addButton.addEventListener("click", addStudentClicked);
-    }
-    document.getElementById("removeStudent").addEventListener("click", removeStudentClicked);
+    //Potentially could use "onchange" event to check the number of students
 
+    const buttonsCollec = document.getElementsByTagName("button");
+    console.log(buttonsCollec);
+
+    //Adds an evevnt listern to the sanitizer button by id
+    document.getElementById("sanitizer").addEventListener("click",sanitizerClicked);
+
+    //Iterates through each button element and attaches the proper event listener to each.
+    for (let i=0; i<buttonsCollec.length; i++) {
+        console.log(buttonsCollec.item(i));
+        let someButtonElm = buttonsCollec.item(i);
+        if (someButtonElm.id.includes("addStudent")){
+            someButtonElm.addEventListener("click", addStudentClicked);
+        }
+    }
+    //document.getElementById("removeStudent").addEventListener("click", removeStudentClicked);
+
+    //Function is called when the sanitizer button is pushed
     function sanitizerClicked() {
         alert("Sanitizer used.");
     }
