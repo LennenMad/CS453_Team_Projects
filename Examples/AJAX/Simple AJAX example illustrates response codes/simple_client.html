@@ -1,0 +1,44 @@
+<html>
+
+<body>
+
+<h1 id="myHeader"> This is an AJAX example</h1>
+<p> This code describes how to do an AJAX example </p>
+<p id="thispart"> This is the part that is updated </p>
+<p> It cleverly updates only part of a web page </p>
+
+<form action = "simple_server.php"
+   <p> Enter your name: <input type="text" name="myname" />
+
+   <button type = "button"  onclick = "doAJAXstuff(this.form)">
+    Paint part of the web page
+   </button>
+ </p>
+</form>
+
+
+<script type = "text/javascript">
+
+function doAJAXstuff(theform) {
+  request = new XMLHttpRequest();
+  request.open("GET","simple_server.php?mydata="+theform.myname.value);
+
+  request.onreadystatechange = function () {
+
+
+	alert("testit data returned is :\n"+request.readyState);
+
+  
+   }
+  request.send();
+
+} 
+
+
+</script>
+
+
+
+</body>
+
+</html>
