@@ -34,7 +34,7 @@
                 <button id="studentEnter" type="button" value="Enter">Enter</button>
                 <button id="studentExit" type="button" value="Exit">Exit</button>
             </td>
-            <td>Room Entrance:<br>
+            <td>Room Entrance: <span id="entrance" value="0"></span><br>
                 <button id="sanitizer" type="button" value="Sanitizer">Sanitizer</button>
             </td>
             <td rowspan="3">Aisleway</td>
@@ -51,20 +51,20 @@
             </td>
         </tr>
         <tr>
-            <td>Student Rectangle #1:<br>
+            <td>Student Rectangle #1: <span id="rect1" value="0"></span><br>
                 <button id="removeStudent1" type="button">-</button>
                 <button id="addStudent1" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
-            <td>Student Rectangle #2:<br>
+            <td>Student Rectangle #2: <span id="rect1" value="0"></span><br>
                 <button id="removeStudent2" type="button">-</button>
                 <button id="addStudent2" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
             <td rowspan="2">Aisleway</td>
-            <td>Student Rectangle #3:<br>
+            <td>Student Rectangle #3: <span id="rect1" value="0"></span><br>
                 <button id="removeStudent3" type="button">-</button>
                 <button id="addStudent3" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
@@ -73,13 +73,13 @@
         </tr>
         <tr>
             <td></td>
-            <td>Student Rectangle #5:<br>
+            <td>Student Rectangle #5: <span id="rect1" value="0"></span><br>
                 <button id="removeStudent5" type="button">-</button>
                 <button id="addStudent5" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
                 <button type="button">Lysol</button>
             </td>
-            <td>Student Rectangle #4:<br>
+            <td>Student Rectangle #4: <span id="rect1" value="0"></span><br>
                 <button id="removeStudent4" type="button">-</button>
                 <button id="addStudent4" type="button">+</button> &ThickSpace; &ThickSpace;
                 <button type="button">Mask</button> &ThickSpace; &ThickSpace;
@@ -101,20 +101,25 @@
     //Potentially could use "onchange" event to check the number of students
 
     const buttonsCollec = document.getElementsByTagName("button");
-    console.log(buttonsCollec);
+    //console.log(buttonsCollec);
 
     //Adds an evevnt listern to the sanitizer button by id
     document.getElementById("sanitizer").addEventListener("click",sanitizerClicked);
 
     //Iterates through each button element and attaches the proper event listener to each.
     for (let i=0; i<buttonsCollec.length; i++) {
-        console.log(buttonsCollec.item(i));
+        //console.log(buttonsCollec.item(i));
         let someButtonElm = buttonsCollec.item(i);
         if (someButtonElm.id.includes("addStudent")){
             someButtonElm.addEventListener("click", addStudentClicked);
+        } else if (someButtonElm.id.includes("removeStudent")){
+            someButtonElm.addEventListener("click", removeStudentClicked);
+        } else if (someButtonElm.id.includes("studentEnter")) {
+            someButtonElm.addEventListener("click", studentEnterClicked);
+        } else if (someButtonElm.id.includes("studentExit")) {
+            someButtonElm.addEventListener("click", studentExitClicked);
         }
     }
-    //document.getElementById("removeStudent").addEventListener("click", removeStudentClicked);
 
     //Function is called when the sanitizer button is pushed
     function sanitizerClicked() {
@@ -125,5 +130,15 @@
     }
     function removeStudentClicked() {
         alert("Student removed.")
+    }
+    function studentEnterClicked() {
+        let entranceStudents = Number(document.getElementById("entrance").innerHTML);
+        entranceStudents++;
+        document.getElementById("entrance").innerHTML = entranceStudents;
+    }
+    function studentExitClicked() {
+        let entranceStudents = Number(document.getElementById("entrance").innerHTML);
+        entranceStudents--;
+        document.getElementById("entrance").innerHTML = entranceStudents;
     }
 </script>
