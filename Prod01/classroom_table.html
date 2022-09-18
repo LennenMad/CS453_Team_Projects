@@ -151,7 +151,7 @@
 
     function doAJAXsendForm(formData) {
         request = new XMLHttpRequest();
-        request.open("GET",formData)
+        request.open("GET","server.php?mydata="+formData,true)
         request.onreadystatechange = function () {
             if (request.readyState == 4)
                 my_callback();
