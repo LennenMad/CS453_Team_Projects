@@ -96,7 +96,7 @@
 </body>
 </div>
 <div>
-<body>
+<body id="test">
 
 </body>
 </div>
@@ -162,7 +162,8 @@
 
     function my_callback() {
         if (request.status == 200) {
-         alert(request.responseText);
+            document.getElementById("test").innerHTML = request.responseText;
+            //alert(request.responseText);
      }
      else if (request.status=404) {
      alert("Server was not found: data returned is :\n"+request.responseText);
