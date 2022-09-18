@@ -1,4 +1,4 @@
-<?php 
+<?php
   $mydata = $_REQUEST["mydata"];
-  print "<p>$mydata</p> ";
+  print "<p>$mydata</p>";
 ?>
