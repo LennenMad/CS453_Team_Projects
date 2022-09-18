@@ -30,6 +30,7 @@
             <td rowspan="4">
                 Class 1 <br><br><br>
                 Class:
+                <imput type="hidden" id="entranceVal" name="entranceVal" value="0"/>
                 <button id="startClass" type="button" value="Start">Start</button>
                 <button id="endClass" type="button" value="End">End</button> <br><br>
                 Student:
@@ -151,7 +152,7 @@
 
     function doAJAXsendForm(formData) {
         request = new XMLHttpRequest();
-        request.open("GET","server.php?mydata="+formData,true)
+        request.open("GET","server.php?mydata="+formData.entranceVal.value,true)
         request.onreadystatechange = function () {
             if (request.readyState == 4)
                 my_callback();
