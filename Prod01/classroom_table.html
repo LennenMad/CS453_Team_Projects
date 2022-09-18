@@ -23,7 +23,7 @@
 </head>
 <div>
 <body>
-    <form>
+    <form id="class1" action="server.php" method="post">
     <!--This table defines the diagram of a class room.-->
     <table class="center">
         <tr>
@@ -138,13 +138,20 @@
     function studentEnterClicked() {
         //Should this also be done through a php POST request?
         let entranceStudents = Number(document.getElementById("entrance").innerHTML);
-        entranceStudents++;
-        document.getElementById("entrance").innerHTML = entranceStudents;
+        doAJAXsendForm(document.getElementById("class1"))
+        //entranceStudents++;
+        //document.getElementById("entrance").innerHTML = entranceStudents;
+        
     }
     function studentExitClicked() {
         let entranceStudents = Number(document.getElementById("entrance").innerHTML);
         entranceStudents--;
         document.getElementById("entrance").innerHTML = entranceStudents;
+    }
+
+    function doAJAXsendForm(formData) {
+        request = new XMLHttpRequest();
+        request.send(formData);
     }
 </script>
 </html>
