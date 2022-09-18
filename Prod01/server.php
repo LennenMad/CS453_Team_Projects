@@ -1,4 +1,4 @@
 <?php 
-  $mydata = $_REQUEST["mydata"];
-  print "<p>$mydata</p> ";
+  $entrancedata = $_REQUEST["entrance"];
+  print "<p>Students at entrance: $entrancedata</p> ";
 ?>

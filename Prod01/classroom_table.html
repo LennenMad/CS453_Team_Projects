@@ -23,19 +23,20 @@
 </head>
 <div>
 <body>
-    <form id="class1" action="server.php">
     <!--This table defines the diagram of a class room.-->
     <table class="center">
         <tr>
             <td rowspan="4">
+                <form id="classEntrance">
                 Class 1 <br><br><br>
                 Class:
-                <input type="hidden" id="entranceVal" name="entranceVal" value="0"/>
                 <button id="startClass" type="button" value="Start">Start</button>
                 <button id="endClass" type="button" value="End">End</button> <br><br>
                 Student:
+                <input type="hidden" id="entranceVal" name="entranceVal" value="0"/>
                 <button id="studentEnter" type="button" value="Enter">Enter</button>
                 <button id="studentExit" type="button" value="Exit">Exit</button>
+                </form>
             </td>
             <td>Room Entrance: <span id="entrance" value="0"></span><br>
                 <button id="sanitizer" type="button" value="Sanitizer">Sanitizer</button>
@@ -93,7 +94,6 @@
             <td colspan="5" style="text-align:center">Aisleway</td>
         </tr>
     </table>
-    </form>
 </body>
 </div>
 <div>
@@ -105,6 +105,7 @@
     //Potentially could use "onchange" event to check the number of students
 
     const buttonsCollec = document.getElementsByTagName("button");
+    const spanCollec = document.getElementsByTagName("span");
     //console.log(buttonsCollec);
 
     //Adds an evevnt listern to the sanitizer button by id
@@ -139,7 +140,7 @@
     function studentEnterClicked() {
         //Should this also be done through a php POST request?
         let entranceStudents = Number(document.getElementById("entrance").innerHTML);
-        doAJAXsendForm(document.getElementById("class1"))
+        doAJAXsendForm(spanCollec);
         //entranceStudents++;
         //document.getElementById("entrance").innerHTML = entranceStudents;
         
@@ -150,26 +151,31 @@
         document.getElementById("entrance").innerHTML = entranceStudents;
     }
 
-    function doAJAXsendForm(formData) {
+    function doAJAXsendForm(allSpans) {
         request = new XMLHttpRequest();
-        request.open("GET","server.php?mydata="+formData.entranceVal,true)
+        request.open("POST","server.php",true)
+        var formData = new FormData();
+        
+        for (let i=0; i<allSpans.length; i++) {
+            let someSpan = allSpans.item(i);
+            formData.append(someSpan.id, someSpan.value);
+        }
+
         request.onreadystatechange = function () {
             if (request.readyState == 4)
                 my_callback();
-        
         }
-        request.send();
+        request.send(formData);
     }
 
     function my_callback() {
         if (request.status == 200) {
             document.getElementById("test").innerHTML = request.responseText;
             //alert(request.responseText);
-     }
-     else if (request.status=404) {
-     alert("Server was not found: data returned is :\n"+request.responseText);
- 
-     }
+        }
+        else if (request.status=404) {
+        alert("Server was not found: data returned is :\n"+request.responseText);
+        }
     }
 </script>
 </html>
