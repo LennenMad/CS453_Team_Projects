@@ -23,7 +23,7 @@
 </head>
 <div>
 <body>
-    <form id="class1" action="server.php" method="post">
+    <form id="class1" action="server.php">
     <!--This table defines the diagram of a class room.-->
     <table class="center">
         <tr>
@@ -151,7 +151,8 @@
 
     function doAJAXsendForm(formData) {
         request = new XMLHttpRequest();
-        request.send(formData);
+        request.open("POST",formData)
+        request.send();
     }
 </script>
 </html>
