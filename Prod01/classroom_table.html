@@ -153,7 +153,6 @@
 
     function doAJAXsendForm(allSpans) {
         request = new XMLHttpRequest();
-        request.open("GET","server.php",true)
         var formData = new FormData();
         
         for (let i=0; i<allSpans.length; i++) {
@@ -161,11 +160,13 @@
             formData.append(someSpan.id, someSpan.value);
         }
 
+        request.open("GET","server.php?formdata="+formData,true)
+
         request.onreadystatechange = function () {
             if (request.readyState == 4)
                 my_callback();
         }
-        request.send(formData);
+        request.send();
     }
 
     function my_callback() {
