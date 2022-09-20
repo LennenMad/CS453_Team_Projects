@@ -70,4 +70,5 @@ Now the container should be accesible from `localhost:8080/filename.html`
 | docker stop CONTAINERNAME | Stops the desired container |
 
 # Testing Webpage
-Run `firefox -P` on the VM to access the firefox GUI if `-X` option was set.
+Run `export XAUTHORITY=$HOME/.Xauthority` first.
+Run `firefox &` on the VM to access the firefox GUI if `-X` option was set.
