@@ -160,7 +160,7 @@
             formData.append(someData.id, someData.value);
         }
 
-        request.open("POST","server.php?",true);
+        request.open("POST","server.php",true);
 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
