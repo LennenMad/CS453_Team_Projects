@@ -25,7 +25,7 @@
 <body>
     <!--This table defines the diagram of a class room.-->
     <table class="center">
-    <form id="class1" method="POST" action="server.php">
+    <form id="class1" method="get" action="server.php">
         <tr>
             <td rowspan="4">
                 Class 1 <br><br><br>
@@ -42,8 +42,8 @@
             <td rowspan="3">Aisleway</td>
             <td>Instructor Rectangle:
                 <input type="number" id="instructor" name="instructor" min="0" max="6" value="0"></input> <br>
-                <!-- <button id="removeInstructor" type="button" value="-">-</button>
-                <button id="addInstructor" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
+                <button id="removeInstructor" type="button" value="-">-</button>
+                <button id="addInstructor" type="button" value="+">+</button> &ThickSpace; &ThickSpace;
                 <button id="instruMask" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                 <button id="intruLysol" type="button" value="Lysol">Lysol</button>
             </td>
@@ -131,12 +131,26 @@
         }
     }
 
+    for (let i=0; i<inputCollec.length; i++) {
+        let someInputElm = inputCollec.item(i);
+        someInputElm.addEventListener("input", handleSomeInput);
+    }
+
+    function handleSomeInput() {
+        let inputId = this.id
+        if (inputId.includes("rect")){
+            alert("Student changed.")
+        }
+        doAJAXsendForm();
+    }
+
     //Function is called when the sanitizer button is pushed
     function sanitizerClicked() {
         alert("Sanitizer used.");
     }
     function addStudentClicked() {
         //Pass event.target.id to php function file to handle which cell is updated and check logic?
+
         doAJAXsendForm();
         alert("Student added.");
     }
@@ -163,7 +177,7 @@
         request = new XMLHttpRequest();
         let formData = new FormData(document.getElementById("class1"));
 
-        request.open("POST","server.php",true);
+        request.open("GET","server.php?formData="+formData,true);
 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
