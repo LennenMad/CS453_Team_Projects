@@ -13,4 +13,4 @@ Visit page at: https://lennenmad.github.io/CS453_Team_Projects/
 | Create Docker Image | y |
 | Create Container from Image | y |
 | Run Container | y |
-| Access Webpage | n |
+| Access Webpage | y |
