@@ -25,72 +25,74 @@
 <body>
     <!--This table defines the diagram of a class room.-->
     <table class="center">
-    <form id="class1">
         <tr>
             <td rowspan="4">
+                <form id="classEntrance">
                 Class 1 <br><br><br>
                 Class:
                 <button id="startClass" type="button" value="Start">Start</button>
                 <button id="endClass" type="button" value="End">End</button> <br><br>
                 Student:
+                <input type="hidden" id="entranceVal" name="entranceVal" value="0"/>
                 <button id="studentEnter" type="button" value="Enter">Enter</button>
                 <button id="studentExit" type="button" value="Exit">Exit</button>
+                </form>
             </td>
-            <td>Room Entrance: <input type="number" id="entrance" name="entrance" min="0" max="6" value="0"></input>
+            <td>Room Entrance: <span id="entrance" value="0"></span><br>
                 <button id="sanitizer" type="button" value="Sanitizer">Sanitizer</button>
             </td>
             <td rowspan="3">Aisleway</td>
-            <td>Instructor Rectangle:
-                <input type="number" id="instructor" name="instructor" min="0" max="6" value="0"></input> <br>
-                <!-- <button id="removeInstructor" type="button" value="-">-</button>
-                <button id="addInstructor" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
+            <td>Instructor Rectangle: <span id="instruRect" value="0"></span><br>
+                <input type="hidden" id="instruRect" name="instruRect" value="0"/>
+                <button id="removeInstructor" type="button" value="-">-</button>
+                <button id="addInstructor" type="button" value="+">+</button> &ThickSpace; &ThickSpace;
                 <button id="instruMask" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                 <button id="intruLysol" type="button" value="Lysol">Lysol</button>
             </td>
-            <td colspan="2">Student Question Rectangle: 
-                <input type="number" id="rectQ" name="rectQ" min="0" max="6" value="0"></input><br>
-                <!-- <button id="removeStudentQ" type="button" value="-">-</button>
-                <button id="addStudentQ" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
+            <td colspan="2">Student Question Rectangle <span id="rectQ" value="0"></span><br>
+                <input type="hidden" id="questionRec" name="questionRect" value="0"/>
+                <button id="removeStudentQ" type="button" value="-">-</button>
+                <button id="addStudentQ" type="button" value="+">+</button> &ThickSpace; &ThickSpace;
                 <button id="questionMask" type="button" value="Mask">Mask</button>
             </td>
         </tr>
         <tr>
-            <td>Student Rectangle #1: 
-                <input type="number" id="rect1" name="rect1" min="0" max="6" value="0"></input><br>
-                <!-- <button id="removeStudent1" type="button" value="-">-</button>
-                <button id="addStudent1" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
+            <td>Student Rectangle #1: <span id="rect1" value="0"></span><br>
+                <input type="hidden" id="rectIn1" name="rects[rect1]" value="0"/>
+                <button id="removeStudent1" type="button" value="-">-</button>
+                <button id="addStudent1" type="button" value="+">+</button> &ThickSpace; &ThickSpace;
                 <button id="studMask1" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                 <button id="studLysol1" type="button" value="Lysol">Lysol</button>
             </td>
-            <td>Student Rectangle #2: 
-                <input type="number" id="rect2" name="rect2" min="0" max="6" value="0"></input><br>
-                <!-- <button id="removeStudent2" type="button" value="-">-</button>
-                <button id="addStudent2" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
+            <td>Student Rectangle #2: <span id="rect2" value="0"></span><br>
+                <input type="hidden" id="rectIn2" name="rects[rect2]" value="0"/>
+                <button id="removeStudent2" type="button" value="-">-</button>
+                <button id="addStudent2" type="button" value="+">+</button> &ThickSpace; &ThickSpace;
                 <button id="studMask2" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                 <button id="studLysol2" type="button" value="Lysol">Lysol</button>
             </td>
             <td rowspan="2">Aisleway</td>
-            <td>Student Rectangle #3: 
-                <input type="number" id="rect3" name="rect3" min="0" max="6" value="0"></input><br>
-                <!-- <button id="removeStudent3" type="button" value="-">-</button>
-                <button id="addStudent3" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
+            <td>Student Rectangle #3: <span id="rect3" value="0"></span><br>
+                <input type="hidden" id="rectIn3" name="rects[rect3]" value="0"/>
+                <button id="removeStudent3" type="button" value="-">-</button>
+                <button id="addStudent3" type="button" value="+">+</button> &ThickSpace; &ThickSpace;
                 <button id="studMask3" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                 <button id="studLysol3" type="button" value="Lysol">Lysol</button>
             </td>
         </tr>
         <tr>
             <td></td>
-            <td>Student Rectangle #5: 
-                <input type="number" id="rect5" name="rect5" min="0" max="6" value="0"></input><br>
-                <!-- <button id="removeStudent5" type="button" value="-">-</button>
-                <button id="addStudent5" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
+            <td>Student Rectangle #5: <span id="rect5" value="0"></span><br>
+                <input type="hidden" id="rectIn5" name="rects[rect5]" value="0"/>
+                <button id="removeStudent5" type="button" value="-">-</button>
+                <button id="addStudent5" type="button" value="+">+</button> &ThickSpace; &ThickSpace;
                 <button id="studMask5" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                 <button id="studLysol5" type="button" value="Lysol">Lysol</button>
             </td>
-            <td>Student Rectangle #4: 
-                <input type="number" id="rect4" name="rect4" min="0" max="6" value="0"></input><br>
-                <!-- <button id="removeStudent4" type="button" value="-">-</button>
-                <button id="addStudent4" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
+            <td>Student Rectangle #4: <span id="rect4" value="0"></span><br>
+                <input type="hidden" id="rectIn4" name="rects[rect4]" value="0"/>
+                <button id="removeStudent4" type="button" value="-">-</button>
+                <button id="addStudent4" type="button" value="+">+</button> &ThickSpace; &ThickSpace;
                 <button id="studMask4" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                 <button id="studLysol4" type="button" value="Lysol">Lysol</button>
             </td>
@@ -98,7 +100,6 @@
         <tr>
             <td colspan="5" style="text-align:center">Aisleway</td>
         </tr>
-    </form>
     </table>
 </body>
 </div>
