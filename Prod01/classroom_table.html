@@ -177,13 +177,13 @@
         request = new XMLHttpRequest();
         //let formData = new FormData(document.getElementById("class1"));
 
-        request.open("GET","server.php?formData="+class1,true);
+        request.open("GET","server.php?",true);
 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
                 my_callback();
         }
-        request.send();
+        request.send(class1);
     }
 
     function my_callback() {
