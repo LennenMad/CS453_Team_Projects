@@ -175,9 +175,9 @@
 
     function doAJAXsendForm() {
         request = new XMLHttpRequest();
-        let formData = new FormData(document.getElementById("class1"));
+        //let formData = new FormData(document.getElementById("class1"));
 
-        request.open("GET","server.php?formData="+formData,true);
+        request.open("GET","server.php?formData="+class1,true);
 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
