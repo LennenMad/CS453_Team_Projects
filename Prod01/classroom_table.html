@@ -103,8 +103,7 @@
 </body>
 </div>
 <div>
-<body>
-    <p id="test"></p>
+<body id="test">
 </body>
 </div>
 <script>
@@ -175,7 +174,11 @@
 
     function my_callback() {
         if (request.status == 200) {
-            document.getElementById("test").append(request.responseText);
+            if (request.responseText.includes("<script>")) {
+                document.append(request.responseText);
+            }else {
+                document.getElementById("test").append(request.responseText);
+            }
             //alert(request.responseText);
         }
         else if (request.status=404) {
