@@ -105,7 +105,7 @@
     //Potentially could use "onchange" event to check the number of students
 
     const buttonsCollec = document.getElementsByTagName("button");
-    const spanCollec = document.getElementsByTagName("span");
+    const inputCollec = document.getElementsByTagName("input");
     //console.log(buttonsCollec);
 
     //Adds an evevnt listern to the sanitizer button by id
@@ -140,7 +140,7 @@
     function studentEnterClicked() {
         //Should this also be done through a php POST request?
         let entranceStudents = Number(document.getElementById("entrance").innerHTML);
-        doAJAXsendForm(spanCollec);
+        doAJAXsendForm(inputCollec);
         //entranceStudents++;
         //document.getElementById("entrance").innerHTML = entranceStudents;
         
@@ -151,38 +151,32 @@
         document.getElementById("entrance").innerHTML = entranceStudents;
     }
 
-    function doAJAXsendForm(allSpans) {
+    function doAJAXsendForm(allData) {
         request = new XMLHttpRequest();
         var formData = new FormData();
         
-        for (let i=0; i<allSpans.length; i++) {
-            let someSpan = allSpans.item(i);
-            formData.append(someSpan.id, someSpan.value);
+        for (let i=0; i<allData.length; i++) {
+            let someData = allData.item(i);
+            formData.append(someData.id, someData.value);
         }
 
         request.open("POST","server.php?",true);
 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
-                console.log("State changed");
                 my_callback();
         }
-        console.log("Sent formData:");
-        console.log(formData);
         request.send(formData);
     }
 
     function my_callback() {
         if (request.status == 200) {
-            console.log("Success")
             document.getElementById("test").innerHTML = request.responseText;
             //alert(request.responseText);
         }
         else if (request.status=404) {
-            console.log("404 error")
             alert("Server was not found: data returned is :\n"+request.responseText);
         }
-        console.log("Other error.")
     }
 </script>
 </html>
