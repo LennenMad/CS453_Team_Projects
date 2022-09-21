@@ -1,4 +1,4 @@
 <?php 
-    $formData = $_GET["formdata"];
+    $formData = $_POST["formdata"];
     echo "<p>Students at entrance: " . $formData["entrance"] . "</p> ";
 ?>
