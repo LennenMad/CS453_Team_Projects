@@ -136,26 +136,28 @@
     function sanitizerClicked() {
         alert("Sanitizer used.");
     }
-    function addStudentClicked(event) {
+    function addStudentClicked() {
         //Pass event.target.id to php function file to handle which cell is updated and check logic?
-        alert("Student added.")
+        doAJAXsendForm();
+        alert("Student added.");
     }
     function removeStudentClicked() {
-        alert("Student removed.")
+        doAJAXsendForm();
+        alert("Student removed.");
     }
     function studentEnterClicked() {
         //Should this also be done through a php POST request?
-        let entranceStudents = Number(document.getElementById("entrance").innerHTML);
-        inputCollec = document.getElementsByTagName("input");
-        doAJAXsendForm(inputCollec);
-        //entranceStudents++;
-        //document.getElementById("entrance").innerHTML = entranceStudents;
+        let entranceStudents = Number(document.getElementById("entrance").value);
+        entranceStudents++;
+        document.getElementById("entrance").value = entranceStudents;
+        doAJAXsendForm();
         
     }
     function studentExitClicked() {
-        let entranceStudents = Number(document.getElementById("entrance").innerHTML);
+        let entranceStudents = Number(document.getElementById("entrance").value);
         entranceStudents--;
-        document.getElementById("entrance").innerHTML = entranceStudents;
+        document.getElementById("entrance").value = entranceStudents;
+        doAJAXsendForm();
     }
 
     function doAJAXsendForm() {
