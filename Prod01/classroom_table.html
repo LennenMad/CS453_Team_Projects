@@ -24,7 +24,7 @@
 <div>
 <body>
     <!--This table defines the diagram of a class room.-->
-    <form id="class1" method="get" action="server.php">
+    <form id="class1">
     <table class="center">
         <tr>
             <td rowspan="4">
@@ -177,7 +177,7 @@
         request = new XMLHttpRequest();
         //let formData = new FormData(document.getElementById("class1"));
 
-        request.open("GET","server.php?",true);
+        request.open("POST","server.php",true);
 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
