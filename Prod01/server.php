@@ -1,12 +1,11 @@
 <?php 
-    $studentRects = htmlspecialchars($_POST["rects"]);
-    echo "<p>" . $studentRects . "</p>";
+    $studentRects = $_POST["rects"];
     foreach ($studentRects as $studentRect) {
-        echo "<p>" . $studentRect . "</p>";
+        echo "<p>" . htmlspecialchars($studentRect) . "</p>";
         /*if ($studentRect <= 2 ) {
             echo "Too many students in rect!";
         }*/
     }
-    echo "<p>Students at entrance: " . htmlspecialchars($_POST["entranceVal"]) . "</p>";
+    //echo "<p>Students at entrance: " . htmlspecialchars($_POST["entranceVal"]) . "</p>";
     
 ?>

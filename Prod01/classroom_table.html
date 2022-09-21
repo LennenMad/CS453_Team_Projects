@@ -25,7 +25,7 @@
 <body>
     <!--This table defines the diagram of a class room.-->
     <table class="center">
-    <form id="class1">
+    <form id="class1" method="POST" action="server.php">
         <tr>
             <td rowspan="4">
                 Class 1 <br><br><br>
@@ -158,14 +158,9 @@
         document.getElementById("entrance").innerHTML = entranceStudents;
     }
 
-    function doAJAXsendForm(allData) {
+    function doAJAXsendForm() {
         request = new XMLHttpRequest();
-        var formData = new FormData();
-        
-        for (let i=0; i<allData.length; i++) {
-            let someData = allData.item(i);
-            formData.append(someData.id, someData.value);
-        }
+        let formData = new FormData(document.getElementById("class1"));
 
         request.open("POST","server.php",true);
 
@@ -178,7 +173,7 @@
 
     function my_callback() {
         if (request.status == 200) {
-            document.getElementById("test").innerHTML = request.responseText;
+            document.getElementById("test").append(request.responseText);
             //alert(request.responseText);
         }
         else if (request.status=404) {
