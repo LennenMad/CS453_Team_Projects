@@ -175,6 +175,7 @@
             if (request.readyState == 4)
                 //return request;
                 my_callback();
+                return;
         }
         request.send();
     }
@@ -186,6 +187,7 @@
                 newElm.innerText = request.responseText;
                 document.getElementById("alerts_div").appendChild(newElm);
                 //document.getElementById("classroom_script").append(request.responseText);
+                return;
             }else {
                 document.getElementById("test").append(request.responseText);
             }
