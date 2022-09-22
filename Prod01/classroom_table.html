@@ -184,7 +184,7 @@
             if (request.responseText.includes("alert(")) {
                 let newElm = document.createElement("script");
                 newElm.innerText = request.responseText;
-                document.getElementById("alert_div").appendChild(newElm);
+                document.getElementById("alerts_div").appendChild(newElm);
                 //document.getElementById("classroom_script").append(request.responseText);
             }else {
                 document.getElementById("test").append(request.responseText);
