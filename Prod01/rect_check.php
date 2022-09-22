@@ -1,7 +1,7 @@
 <?php 
     $rectVal = htmlspecialchars($_GET["rect"]);
     if ($rectVal >= 2) {
-        echo "alert('Too many students at entrance!');";
+        echo "alert('Too many students at desk!');";
         exit;
     }
 
