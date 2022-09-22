@@ -3,7 +3,7 @@
 
     $rectVal = htmlspecialchars($_GET["rect"]);
     if ($rectVal >= 6) {
-        echo "<script>alert('Too many students at entrance!');</script>";
+        echo "alert('Too many students at entrance!');";
     }
     
     //echo "<p>Students at entrance: " . htmlspecialchars($_POST["entranceVal"]) . "</p>";
