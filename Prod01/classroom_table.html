@@ -160,14 +160,14 @@
         //doAJAXsendForm();
     }
     function studentExitClicked() {
-        if (sanatizerButton == false) {
+        if (sanitizerButton == false) {
             alert("Student did not sanatize!");
             return;
         }
         let entranceStudents = Number(document.getElementById("entrance").value);
         entranceStudents--;
         document.getElementById("entranceInput").value = entranceStudents;
-        sanatizerButton = false;
+        sanitizerButton = false;
         //doAJAXsendForm();
     }
 
