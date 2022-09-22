@@ -164,15 +164,16 @@
     function doAJAXsendForm(sendUrl,inputVal) {
         request = new XMLHttpRequest();
         let data = "rect=" + inputVal;
+        let fullRequest = sendUrl + "?" + data;
 
-        request.open("POST",sendUrl,true);
+        request.open("GET",fullRequest,true);
 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
                 //return request;
                 my_callback();
         }
-        request.send(data);
+        request.send();
     }
 
     function my_callback() {
