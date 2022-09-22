@@ -125,7 +125,7 @@
 
     for (let i=0; i<inputCollec.length; i++) {
         let someInputElm = inputCollec.item(i);
-        someInputElm.addEventListener("input", handleSomeInput);
+        someInputElm.addEventListener("change", handleSomeInput);
     }
 
     function handleSomeInput() {
@@ -133,6 +133,7 @@
         let sendUrl = document.getElementById(inputName).action;
         //let response = 
         doAJAXsendForm(sendUrl,this.value);
+        return;
     }
 
     //Function is called when the sanitizer button is pushed
@@ -149,13 +150,13 @@
         doAJAXsendForm();
         alert("Student removed.");
     }
+
     function studentEnterClicked() {
         //Should this also be done through a php POST request?
         let entranceStudents = Number(document.getElementById("entrance").value);
         entranceStudents++;
         document.getElementById("entrance").value = entranceStudents;
         doAJAXsendForm();
-        
     }
     function studentExitClicked() {
         let entranceStudents = Number(document.getElementById("entrance").value);
