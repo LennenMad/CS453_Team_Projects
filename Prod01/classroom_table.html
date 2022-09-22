@@ -95,6 +95,8 @@
     </div>
     <div id="test">
     </div>
+    <div id="alerts_div">
+    </div>
 </body>
 <script id="classroom_script">
     //Potentially could use "onchange" event to check the number of students
@@ -182,7 +184,7 @@
             if (request.responseText.includes("alert(")) {
                 let newElm = document.createElement("script");
                 newElm.innerText = request.responseText;
-                document.html.appendChild(newElm);
+                document.getElementById("alert_div").appendChild(newElm);
                 //document.getElementById("classroom_script").append(request.responseText);
             }else {
                 document.getElementById("test").append(request.responseText);
