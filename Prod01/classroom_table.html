@@ -27,7 +27,7 @@
         <table class="center">
             <tr>
                 <td rowspan="4">
-                    Class 1 <br><br><br>
+                    Classroom <br><br><br>
                     Class:
                     <button id="startClass" type="button" value="Start">Start</button>
                     <button id="endClass" type="button" value="End">End</button> <br><br>
@@ -36,7 +36,7 @@
                     <button id="studentExit" type="button" value="Exit">Exit</button>
                 </td>
                 <td><form id="entrance" action="entrance_check.php">
-                    Room Entrance: <input type="number" id="entranceInput" name="entrance" min="0" max="6" value="0"></input>
+                    Room Entrance: <span id="entranceVal" name="entrance" value="0"></span>
                     <button id="sanitizer" type="button" value="Sanitizer">Sanitizer</button>
                 </form></td>
                 <td rowspan="3">Aisleway</td>
@@ -154,9 +154,9 @@
 
     function studentEnterClicked() {
         //Should this also be done through a php POST request?
-        let entranceStudents = Number(document.getElementById("entrance").value);
+        let entranceStudents = Number(document.getElementById("entranceVal").value);
         entranceStudents++;
-        document.getElementById("entranceInput").value = entranceStudents;
+        document.getElementById("entranceVal").value = entranceStudents;
         //doAJAXsendForm();
     }
     function studentExitClicked() {
@@ -164,9 +164,9 @@
             alert("Student did not sanatize!");
             return;
         }
-        let entranceStudents = Number(document.getElementById("entrance").value);
+        let entranceStudents = Number(document.getElementById("entranceVal").value);
         entranceStudents--;
-        document.getElementById("entranceInput").value = entranceStudents;
+        document.getElementById("entranceVal").value = entranceStudents;
         sanitizerButton = false;
         //doAJAXsendForm();
     }
