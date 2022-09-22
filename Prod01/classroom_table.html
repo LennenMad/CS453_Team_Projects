@@ -161,9 +161,9 @@
         doAJAXsendForm();
     }
 
-    function doAJAXsendForm(sendUrl,inputName,inputVal) {
+    function doAJAXsendForm(sendUrl,inputVal) {
         request = new XMLHttpRequest();
-        let data = inputName + "=" + inputName;
+        let data = "rect=" + inputVal;
 
         request.open("POST",sendUrl,true);
 
