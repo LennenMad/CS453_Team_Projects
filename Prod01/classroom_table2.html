@@ -21,9 +21,10 @@
         }
     </style>
 </head>
-<body>
-    <div>
+<div>
+    <body>
         <!--This table defines the diagram of a class room.-->
+        <form id="class1">
         <table class="center">
             <tr>
                 <td rowspan="4">
@@ -54,59 +55,57 @@
                 </td>
             </tr>
             <tr>
-                <td><form id="rect1" action="student_check.php">
-                    Student Rectangle #1: 
-                    <input type="number" id="rectNum1" name="rect1" min="0" max="6" value="0"></input><br>
+                <td>Student Rectangle #1: 
+                    <input type="number" id="rect1" name="rect1" min="0" max="6"></input><br>
                     <!-- <button id="removeStudent1" type="button" value="-">-</button>
                     <button id="addStudent1" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask1" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol1" type="button" value="Lysol">Lysol</button>
-                </form></td>
-                <td><form id="rect2" action="student_check.php">
-                    Student Rectangle #2: 
-                    <input type="number" id="rectNum2" name="rect2" min="0" max="6" value="0"></input><br>
+                </td>
+                <td>Student Rectangle #2: 
+                    <input type="number" id="rect2" name="rect2" min="0" max="6" value="0"></input><br>
                     <!-- <button id="removeStudent2" type="button" value="-">-</button>
                     <button id="addStudent2" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask2" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol2" type="button" value="Lysol">Lysol</button>
-                </form></td>
+                </td>
                 <td rowspan="2">Aisleway</td>
-                <td><form id="rect3" action="student_check.php">
-                    Student Rectangle #3: 
-                    <input type="number" id="rectNum3" name="rect3" min="0" max="6" value="0"></input><br>
+                <td>Student Rectangle #3: 
+                    <input type="number" id="rect3" name="rect3" min="0" max="6" value="0"></input><br>
                     <!-- <button id="removeStudent3" type="button" value="-">-</button>
                     <button id="addStudent3" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask3" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol3" type="button" value="Lysol">Lysol</button>
-                </form></td>
+                </td>
             </tr>
             <tr>
                 <td></td>
-                <td><form id="rect5" action="student_check.php">
-                    Student Rectangle #5: 
-                    <input type="number" id="rectNum5" name="rect5" min="0" max="6" value="0"></input><br>
+                <td>Student Rectangle #5: 
+                    <input type="number" id="rect5" name="rect5" min="0" max="6" value="0"></input><br>
                     <!-- <button id="removeStudent5" type="button" value="-">-</button>
                     <button id="addStudent5" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask5" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol5" type="button" value="Lysol">Lysol</button>
-                </form></td>
-                <td><form id="rect4" action="student_check.php">
-                    Student Rectangle #4: 
-                    <input type="number" id="rectNum4" name="rect4" min="0" max="6" value="0"></input><br>
+                </td>
+                <td>Student Rectangle #4: 
+                    <input type="number" id="rect4" name="rect4" min="0" max="6" value="0"></input><br>
                     <!-- <button id="removeStudent4" type="button" value="-">-</button>
                     <button id="addStudent4" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask4" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol4" type="button" value="Lysol">Lysol</button>
-                </form></td>
+                </td>
             </tr>
             <tr>
                 <td colspan="5" style="text-align:center">Aisleway</td>
             </tr>
         </table>
-    </div>
-    <div id="test">
-    </div>
-</body>
+        </form>
+    </body>
+</div>
+<div>
+    <body id="test">
+    </body>
+</div>
 <script>
     //Potentially could use "onchange" event to check the number of students
 
@@ -138,10 +137,9 @@
     }
 
     function handleSomeInput() {
-        let inputName = this.name;
-        let sendUrl = document.getElementById(inputName).action;
-        //let response = 
-        doAJAXsendForm(sendUrl,inputName);
+        let inputId = this.id
+        
+        doAJAXsendForm();
     }
 
     //Function is called when the sanitizer button is pushed
@@ -173,17 +171,17 @@
         doAJAXsendForm();
     }
 
-    function doAJAXsendForm(sendUrl,formId) {
+    function doAJAXsendForm() {
         request = new XMLHttpRequest();
+        //let formData = new FormData(document.getElementById("class1"));
 
-        request.open("POST",sendUrl,true);
+        request.open("POST","server.php",true);
 
         request.onreadystatechange = function () {
             if (request.readyState == 4)
-                //return request;
                 my_callback();
         }
-        request.send(formId);
+        request.send(class1);
     }
 
     function my_callback() {
