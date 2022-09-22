@@ -103,6 +103,7 @@
 
     const buttonsCollec = document.getElementsByTagName("button");
     let inputCollec = document.getElementsByTagName("input");
+    let sanitizerButton = false;
     //console.log(buttonsCollec);
 
     //Adds an evevnt listern to the sanitizer button by id
@@ -138,7 +139,7 @@
 
     //Function is called when the sanitizer button is pushed
     function sanitizerClicked() {
-        alert("Sanitizer used.");
+        sanitizerButton = true;
     }
     function addStudentClicked() {
         //Pass event.target.id to php function file to handle which cell is updated and check logic?
@@ -156,13 +157,18 @@
         let entranceStudents = Number(document.getElementById("entrance").value);
         entranceStudents++;
         document.getElementById("entrance").value = entranceStudents;
-        doAJAXsendForm();
+        //doAJAXsendForm();
     }
     function studentExitClicked() {
+        if (sanatizerButton == false) {
+            alert("Student did not sanatize!");
+            return;
+        }
         let entranceStudents = Number(document.getElementById("entrance").value);
         entranceStudents--;
         document.getElementById("entrance").value = entranceStudents;
-        doAJAXsendForm();
+        sanatizerButton = false;
+        //doAJAXsendForm();
     }
 
     function doAJAXsendForm(sendUrl,inputVal) {
