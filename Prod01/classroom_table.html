@@ -48,8 +48,6 @@
                 </td>
                 <td colspan="2">Student Question Rectangle: 
                     <input type="number" id="rectQ" name="rectQ" min="0" max="6" value="0"></input><br>
-                    <!-- <button id="removeStudentQ" type="button" value="-">-</button>
-                    <button id="addStudentQ" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="questionMask" type="button" value="Mask">Mask</button>
                 </td>
             </tr>
@@ -57,16 +55,12 @@
                 <td><form id="rect1" action="student_check.php">
                     Student Rectangle #1: 
                     <input type="number" id="rectNum1" name="rect1" min="0" max="6" value="0"></input><br>
-                    <!-- <button id="removeStudent1" type="button" value="-">-</button>
-                    <button id="addStudent1" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask1" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol1" type="button" value="Lysol">Lysol</button>
                 </form></td>
                 <td><form id="rect2" action="student_check.php">
                     Student Rectangle #2: 
                     <input type="number" id="rectNum2" name="rect2" min="0" max="6" value="0"></input><br>
-                    <!-- <button id="removeStudent2" type="button" value="-">-</button>
-                    <button id="addStudent2" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask2" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol2" type="button" value="Lysol">Lysol</button>
                 </form></td>
@@ -74,8 +68,6 @@
                 <td><form id="rect3" action="student_check.php">
                     Student Rectangle #3: 
                     <input type="number" id="rectNum3" name="rect3" min="0" max="6" value="0"></input><br>
-                    <!-- <button id="removeStudent3" type="button" value="-">-</button>
-                    <button id="addStudent3" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask3" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol3" type="button" value="Lysol">Lysol</button>
                 </form></td>
@@ -85,16 +77,12 @@
                 <td><form id="rect5" action="student_check.php">
                     Student Rectangle #5: 
                     <input type="number" id="rectNum5" name="rect5" min="0" max="6" value="0"></input><br>
-                    <!-- <button id="removeStudent5" type="button" value="-">-</button>
-                    <button id="addStudent5" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask5" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol5" type="button" value="Lysol">Lysol</button>
                 </form></td>
                 <td><form id="rect4" action="student_check.php">
                     Student Rectangle #4: 
                     <input type="number" id="rectNum4" name="rect4" min="0" max="6" value="0"></input><br>
-                    <!-- <button id="removeStudent4" type="button" value="-">-</button>
-                    <button id="addStudent4" type="button" value="+">+</button> &ThickSpace; &ThickSpace; -->
                     <button id="studMask4" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol4" type="button" value="Lysol">Lysol</button>
                 </form></td>
@@ -175,6 +163,7 @@
 
     function doAJAXsendForm(sendUrl,formId) {
         request = new XMLHttpRequest();
+        let formData = document.getElementById(formId);
 
         request.open("POST",sendUrl,true);
 
@@ -183,7 +172,7 @@
                 //return request;
                 my_callback();
         }
-        request.send(formId);
+        request.send(formData);
     }
 
     function my_callback() {
