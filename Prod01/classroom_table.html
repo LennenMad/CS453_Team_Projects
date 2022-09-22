@@ -156,7 +156,7 @@
         //Should this also be done through a php POST request?
         let entranceStudents = Number(document.getElementById("entrance").value);
         entranceStudents++;
-        document.getElementById("entrance").value = entranceStudents;
+        document.getElementById("entranceInput").value = entranceStudents;
         //doAJAXsendForm();
     }
     function studentExitClicked() {
@@ -166,7 +166,7 @@
         }
         let entranceStudents = Number(document.getElementById("entrance").value);
         entranceStudents--;
-        document.getElementById("entrance").value = entranceStudents;
+        document.getElementById("entranceInput").value = entranceStudents;
         sanatizerButton = false;
         //doAJAXsendForm();
     }
