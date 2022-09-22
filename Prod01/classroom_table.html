@@ -179,7 +179,7 @@
 
     function my_callback() {
         if (request.status == 200) {
-            if (request.responseText.includes("<script>")) {
+            if (request.responseText.includes("alert(")) {
                 document.getElementById("classroom_script").append(request.responseText);
             }else {
                 document.getElementById("test").append(request.responseText);
