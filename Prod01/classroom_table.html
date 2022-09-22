@@ -149,17 +149,14 @@
         entranceStudents--;
         document.getElementById("entranceVal").innerHTML = entranceStudents;
         let inputId = this.name;
-        let deskVal = document.getElementById(inputId).value;
-        deskVal++;
-        document.getElementById(inputId).value = deskVal;
+        document.getElementById(inputId).stepUp();
     }
     function removeStudentClicked() {
         let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
         entranceStudents++;
         document.getElementById("entranceVal").innerHTML = entranceStudents;
-        let deskVal = document.getElementById(inputId).value;
-        deskVal--;
-        document.getElementById(inputId).value = deskVal;
+        let inputId = this.name;
+        document.getElementById(inputId).stepDown();
     }
 
     function studentEnterClicked() {
