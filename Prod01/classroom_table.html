@@ -129,7 +129,7 @@
         let inputName = this.name;
         let sendUrl = document.getElementById(inputName).action;
         //let response = 
-        doAJAXsendForm(sendUrl,inputName);
+        doAJAXsendForm(sendUrl,inputName,this.value);
     }
 
     //Function is called when the sanitizer button is pushed
@@ -161,9 +161,9 @@
         doAJAXsendForm();
     }
 
-    function doAJAXsendForm(sendUrl,formId) {
+    function doAJAXsendForm(sendUrl,inputName,inputVal) {
         request = new XMLHttpRequest();
-        let formData = document.getElementById(formId);
+        let data = inputName + "=" + inputName;
 
         request.open("POST",sendUrl,true);
 
@@ -172,7 +172,7 @@
                 //return request;
                 my_callback();
         }
-        request.send(formData);
+        request.send(data);
     }
 
     function my_callback() {
