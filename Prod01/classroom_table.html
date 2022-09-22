@@ -180,7 +180,10 @@
     function my_callback() {
         if (request.status == 200) {
             if (request.responseText.includes("alert(")) {
-                document.getElementById("classroom_script").append(request.responseText);
+                let newElm = document.createElement("script");
+                newElm.innerText = request.responseText;
+                document.html.appendChild(newElm);
+                //document.getElementById("classroom_script").append(request.responseText);
             }else {
                 document.getElementById("test").append(request.responseText);
             }
