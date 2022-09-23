@@ -147,11 +147,12 @@
         let inputName = this.name;
         let sendUrl = document.getElementById(inputName).action;
         //let response = 
-        doAJAXsendForm(sendUrl,this.value);
+        //doAJAXsendForm(sendUrl,this.value);
         return;
     }
     function someInput(inputId) {
-        let sendUrl = document.getElementById(inputId).action;
+        let formId = document.getElementById(inputId).name;
+        let sendUrl = document.getElementById(formId).action;
         let inputVal = document.getElementById(inputId).value;
         let data = "name=" + inputId + "&" + "value=" + inputVal;
         doAJAXsendForm(sendUrl,data);
