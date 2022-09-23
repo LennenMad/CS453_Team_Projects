@@ -42,13 +42,17 @@
                 <td rowspan="3">Aisleway</td>
                 <td><form id="instructor" action="rect_check.php">
                     Instructor Rectangle:
-                    <input type="number" id="instructorInput" name="instructor" min="0" max="6" value="0"></input><br>
+                    <input type="number" id="instructor" name="instructorInput" min="0" max="6" value="0"></input><br>
+                    <button id="addInstructor" name="instructor" type="button">+</button>
+                    <button id="removeInstructor" name="instructor" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="instruMask" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="intruLysol" type="button" value="Lysol">Lysol</button>
                 </form></td>
                 <td colspan="2"><form id="rectQ" action="rect_check.php">
                     Student Question Rectangle: 
                     <input type="number" id="rectNumQ" name="rectQ" min="0" max="6" value="0"></input><br>
+                    <button id="addStudentQ" name="rectNumQ" type="button">+</button>
+                    <button id="removeStudentQ" name="rectNumQ" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="questionMask" type="button" value="Mask">Mask</button>
                 </form></td>
             </tr>
@@ -63,14 +67,18 @@
                 </form></td>
                 <td><form id="rect2" action="rect_check.php">
                     Student Rectangle #2: 
-                    <input type="number" id="rectNum2" name="rect2" min="0" max="6" value="0"></input><br>
+                    <input type="number" id="rectNum2" name="rect2" readOnly="true" min="0" max="6" value="0"></input><br>
+                    <button id="addStudent2" name="rectNum2" type="button">+</button>
+                    <button id="removeStudent2" name="rectNum2" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask2" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol2" type="button" value="Lysol">Lysol</button>
                 </form></td>
                 <td rowspan="2">Aisleway</td>
                 <td><form id="rect3" action="rect_check.php">
                     Student Rectangle #3: 
-                    <input type="number" id="rectNum3" name="rect3" min="0" max="6" value="0"></input><br>
+                    <input type="number" id="rectNum3" name="rect3" readOnly="true" min="0" max="6" value="0"></input><br>
+                    <button id="addStudent3" name="rectNum3" type="button">+</button>
+                    <button id="removeStudent3" name="rectNum3" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask3" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol3" type="button" value="Lysol">Lysol</button>
                 </form></td>
@@ -79,13 +87,17 @@
                 <td></td>
                 <td><form id="rect5" action="rect_check.php">
                     Student Rectangle #5: 
-                    <input type="number" id="rectNum5" name="rect5" min="0" max="6" value="0"></input><br>
+                    <input type="number" id="rectNum5" name="rect5" readOnly="true" min="0" max="6" value="0"></input><br>
+                    <button id="addStudent5" name="rectNum5" type="button">+</button>
+                    <button id="removeStudent5" name="rectNum5" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask5" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol5" type="button" value="Lysol">Lysol</button>
                 </form></td>
                 <td><form id="rect4" action="rect_check.php">
                     Student Rectangle #4: 
-                    <input type="number" id="rectNum4" name="rect4" min="0" max="6" value="0"></input><br>
+                    <input type="number" id="rectNum4" name="rect4" readOnly="true" min="0" max="6" value="0"></input><br>
+                    <button id="addStudent4" name="rectNum4" type="button">+</button>
+                    <button id="removeStudent4" name="rectNum4" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask4" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol4" type="button" value="Lysol">Lysol</button>
                 </form></td>
@@ -138,6 +150,13 @@
         doAJAXsendForm(sendUrl,this.value);
         return;
     }
+    function someInput(inputId) {
+        let sendUrl = document.getElementById(inputId).action;
+        let inputVal = document.getElementById(inputId).value;
+        let data = "name=" + inputId + "&" + "value=" + inputVal;
+        doAJAXsendForm(sendUrl,data);
+        return;
+    }
 
     //Function is called when the sanitizer button is pushed
     function sanitizerClicked() {
@@ -150,6 +169,7 @@
         document.getElementById("entranceVal").innerHTML = entranceStudents;
         let inputId = this.name;
         document.getElementById(inputId).stepUp();
+        someInput(inputId);
     }
     function removeStudentClicked() {
         let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
@@ -178,9 +198,8 @@
         //doAJAXsendForm();
     }
 
-    function doAJAXsendForm(sendUrl,inputVal) {
+    function doAJAXsendForm(sendUrl,data) {
         request = new XMLHttpRequest();
-        let data = "rect=" + inputVal;
         let fullRequest = sendUrl + "?" + data;
 
         request.open("GET",fullRequest,true);
