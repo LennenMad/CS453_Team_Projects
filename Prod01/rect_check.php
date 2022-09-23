@@ -1,8 +1,8 @@
 <?php 
-    $rectVal = htmlspecialchars($_GET["value"]);
     $rectName = htmlspecialchars($_GET["name"]);
-    if ($rectVal >= 2) {
-        if (str_contains($rectName,"rect")) {
+    $rectVal = htmlspecialchars($_GET["value"]);
+    if (str_contains($rectName,"rect")) {
+        if ($rectVal >= 2) {
             //Check for which student desk
             if (str_ends_with($rectName,"1")) {
                 echo "alert('Only one student should be at Dest 1!')";
@@ -16,14 +16,18 @@
                 echo "alert('Only one student should be at Dest 5!')";
             } else if (str_ends_with($rectName,"Q")) {
                 echo "alert('Only one student should be in the Question Rectangle!')";
+            } else {
+                echo "alert('Only the Instructor should be up front!')";
             }
-        }else {
-            echo "alert('Only the Instructor should be up front!')";
         }
         exit;
+    } else if (str_contains($rectName,"masks")) {
+        //Check if all students have masks
+    } else if (str_contains($rectName,"lysol")) {
+        //Check if all students have used the lysol
     }
 
-    echo "" . htmlspecialchars($_GET["value"]);
+    //echo "" . htmlspecialchars($_GET["value"]);
     
     //echo "<p>Students at entrance: " . htmlspecialchars($_POST["entranceVal"]) . "</p>";
     
