@@ -99,7 +99,7 @@
                     <button id="addStudent4" name="rectNum4" type="button">+</button>
                     <button id="removeStudent4" name="rectNum4" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask4" type="button" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
-                    <button id="studLysol4" type="button" value="Lysol">Lysol</button>
+                    <button id="studLysol4" type="button" disabled="true" value="Lysol">Lysol</button>
                 </form></td>
             </tr>
             <tr>
@@ -118,6 +118,8 @@
     const buttonsCollec = document.getElementsByTagName("button");
     let inputCollec = document.getElementsByTagName("input");
     let sanitizerButton = false;
+    let maskButtons = new Array(false,false,false,false,false,false,false);
+    let lysolButtons = new Array(false,false,false,false,false,false,false);
     //console.log(buttonsCollec);
 
     //Adds an evevnt listern to the sanitizer button by id
@@ -135,14 +137,22 @@
             someButtonElm.addEventListener("click", studentEnterClicked);
         } else if (someButtonElm.id.includes("studentExit")) {
             someButtonElm.addEventListener("click", studentExitClicked);
+        } else if (someButtonElm.id.includes("studMask")) {
+            someButtonElm.addEventListener("click", maskButtonClicked);
+        } else if (someButtonElm.id.includes("studLysol")) {
+            someButtonElm.addEventListener("click", lysolButtonClicked);
+        } else if (someButtonElm.id.includes("startClass")) {
+            someButtonElm.addEventListener("click", startClassClicked);
+        } else if (someButtonElm.id.includes("endClass")) {
+            someButtonElm.addEventListener("click", endClassClicked);
         }
     }
-
+    
+    /*
     for (let i=0; i<inputCollec.length; i++) {
         let someInputElm = inputCollec.item(i);
         someInputElm.addEventListener("change", handleSomeInput);
     }
-
     function handleSomeInput() {
         let inputName = this.name;
         let sendUrl = document.getElementById(inputName).action;
@@ -150,10 +160,17 @@
         //doAJAXsendForm(sendUrl,this.value);
         return;
     }
+    */
+
+    //This func handles form submissions which deal with input values
     function someInput(inputId) {
+        //Form id is grabed from input name
         let formId = document.getElementById(inputId).name;
+        //Form url is grabed from the form id
         let sendUrl = document.getElementById(formId).action;
+        //Input value is grabed from the input id
         let inputVal = document.getElementById(inputId).value;
+        //Submission data is concated into the query ending
         let data = "name=" + inputId + "&" + "value=" + inputVal;
         doAJAXsendForm(sendUrl,data);
         return;
@@ -161,9 +178,11 @@
 
     //Function is called when the sanitizer button is pushed
     function sanitizerClicked() {
+        //Flip sanitizer flag to true on click
         sanitizerButton = true;
     }
 
+    //This func is called when any plus button is pressed
     function addStudentClicked() {
         let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
         entranceStudents--;
@@ -172,6 +191,7 @@
         document.getElementById(inputId).stepUp();
         someInput(inputId);
     }
+    //This func is called when any minus button is pressed
     function removeStudentClicked() {
         let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
         entranceStudents++;
@@ -179,7 +199,46 @@
         let inputId = this.name;
         document.getElementById(inputId).stepDown();
     }
+    //This func is called when any mask button is pressed
+    function maskButtonClicked() {
+        let buttonId = this.id;
+        if (buttonId.contians("instru")) {
+            //Change the instuctor mask flag to true
+        } else if (buttonId.contians("question")) {
+            //Change the question rectangle mask flag to true
+        } else {
+            //Grab the number of desk
+            let deskNum = buttonId.charAt(8);
+            //Change the mask flag in maskButton array coresponding to the desk number
 
+        }
+    }
+    //This func is called when any lysol button is pressed
+    function lysolButtonClicked() {
+        let buttonId = this.id;
+        if (buttonId.contians("instru")) {
+            //Change the instuctor mask flag to true
+        } else {
+            //Grab the number of desk
+            let deskNum = buttonId.charAt(8);
+            //Change the mask flag in maskButton array coresponding to the desk number
+            
+        }
+    }
+
+    //This func is called when the start class button is pressed
+    function startClassClicked() {
+        for (let i=0; i<maskButtons.length; i++) {
+            if (!maskButtons[i]) {
+                alert("Desk " + i +" is not wearing a mask!");
+            }
+        }
+    }
+    //This func is called when the end class button is pressed
+    function endClassClicked() {
+
+    }
+    //This func is called when the student enter button is pressed
     function studentEnterClicked() {
         //Should this also be done through a php POST request?
         let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
@@ -187,6 +246,7 @@
         document.getElementById("entranceVal").innerHTML = entranceStudents;
         //doAJAXsendForm();
     }
+    //This func is called when the student exit button is pressed
     function studentExitClicked() {
         if (sanitizerButton == false) {
             alert("Student did not sanatize!");
@@ -199,6 +259,7 @@
         //doAJAXsendForm();
     }
 
+    //This func sends the form data to the server file
     function doAJAXsendForm(sendUrl,data) {
         request = new XMLHttpRequest();
         let fullRequest = sendUrl + "?" + data;
@@ -214,6 +275,7 @@
         request.send();
     }
 
+    //This func handles any callback from the server file
     function my_callback() {
         if (request.status == 200) {
             if (request.responseText.includes("alert(")) {
