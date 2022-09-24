@@ -39,12 +39,18 @@
             }
         }
         exit;
-    } else if (str_contains($rectName,"mask")) {
+    } else if (str_contains($rectName,"masks")) {
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
             foreach ($maskFlags as $num => $maskFlag) {
                 if (!$maskFlag) {
-                    echo "Desk " . $num . " is not properly wearing a mask!";
+                    if ($num = "I") {
+                        echo "Instructor is not properly wearing a mask!";
+                    } else if ($num = "Q") {
+                        echo "Question Square is not properly wearing a mask";
+                    } else {
+                        echo "Desk " . $num . " is not properly wearing a mask!";
+                    }
                     exit;
                 }
             }
@@ -59,7 +65,11 @@
         if (str_contains($rectVal,"check")) {
             foreach ($lysolFlags as $num => $lysolFlag) {
                 if (!$lysolFlag) {
-                    echo "Desk " . $num . " has not used their lysol!";
+                    if ($num = "I") {
+                        echo "Instructor has not used their Lysol!";
+                    }  else {
+                        echo "Desk " . $num . " has not used their Lysol!";
+                    }
                     exit;
                 }
             }
