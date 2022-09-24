@@ -213,8 +213,8 @@
     //This func is called when any mask button is pressed
     function maskButtonClicked() {
         let buttonId = this.id;
-        let inputId = document.getElementById(this.name);
-        let sendUrl = document.getElementById(inputId).action;
+        let inputElm = document.getElementById(this.name);
+        let sendUrl = document.getElementById(inputElm.id).action;
         if (buttonId.contians("instru")) {
             //Change the instuctor mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
@@ -237,8 +237,8 @@
     //This func is called when any lysol button is pressed
     function lysolButtonClicked() {
         let buttonId = this.id;
-        let inputId = document.getElementById(this.name);
-        let sendUrl = document.getElementById(inputId).action;
+        let inputElm = document.getElementById(this.name);
+        let sendUrl = document.getElementById(inputElm.id).action;
         if (buttonId.contians("instru")) {
             //Change the instuctor mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
