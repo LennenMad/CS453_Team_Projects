@@ -215,12 +215,12 @@
         let buttonId = this.id;
         let inputElm = document.getElementById(this.name);
         let sendUrl = document.getElementById(inputElm.id).action;
-        if (buttonId.contains("instru")) {
+        if (buttonId.includes("instru")) {
             //Change the instuctor mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
             doAJAXsendForm(sendUrl,data);
             return;
-        } else if (buttonId.contains("question")) {
+        } else if (buttonId.includes("question")) {
             //Change the question rectangle mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
             doAJAXsendForm(sendUrl,data);
@@ -239,7 +239,7 @@
         let buttonId = this.id;
         let inputElm = document.getElementById(this.name);
         let sendUrl = document.getElementById(inputElm.id).action;
-        if (buttonId.contains("instru")) {
+        if (buttonId.includes("instru")) {
             //Change the instuctor mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
             doAJAXsendForm(sendUrl,data);
