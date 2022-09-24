@@ -29,8 +29,8 @@
                 <td rowspan="4">
                     Classroom <br><br><br>
                     Class:
-                    <button id="startClass" type="button" value="Start">Start</button>
-                    <button id="endClass" type="button" value="End">End</button> <br><br>
+                    <button id="startClass" type="button" name="class_mask_lysol" value="Start">Start</button>
+                    <button id="endClass" type="button" name="class_lysol" value="End">End</button> <br><br>
                     Student:
                     <button id="studentEnter" type="button" value="Enter">Enter</button>
                     <button id="studentExit" type="button" value="Exit">Exit</button>
@@ -46,14 +46,14 @@
                     <button id="addInstructor" name="instructor" type="button">+</button>
                     <button id="removeInstructor" name="instructor" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="instruMask" type="button" name="instructor" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
-                    <button id="intruLysol" type="button" name="instructor" disabled="true" value="Lysol">Lysol</button>
+                    <button id="intruLysol" type="button" name="instructor" value="Lysol">Lysol</button>
                 </form></td>
                 <td colspan="2"><form id="rectQ" action="rect_check.php">
                     Student Question Rectangle: 
                     <input type="number" id="rectNumQ" name="rectQ" min="0" max="6" value="0"></input><br>
                     <button id="addStudentQ" name="rectNumQ" type="button">+</button>
                     <button id="removeStudentQ" name="rectNumQ" type="button">&dash;</button> &ThickSpace; &ThickSpace;
-                    <button id="questionMask" type="button" name="rectNumQ" disabled="true" value="Mask">Mask</button>
+                    <button id="questionMask" type="button" name="rectNumQ" value="Mask">Mask</button>
                 </form></td>
             </tr>
             <tr>
@@ -63,7 +63,7 @@
                     <button id="addStudent1" name="rectNum1" type="button">+</button>
                     <button id="removeStudent1" name="rectNum1" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask1" type="button" name="rectNum1" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
-                    <button id="studLysol1" type="button" name="rectNum1" disabled="true" value="Lysol">Lysol</button>
+                    <button id="studLysol1" type="button" name="rectNum1" value="Lysol">Lysol</button>
                 </form></td>
                 <td><form id="rect2" action="rect_check.php">
                     Student Rectangle #2: 
@@ -71,7 +71,7 @@
                     <button id="addStudent2" name="rectNum2" type="button">+</button>
                     <button id="removeStudent2" name="rectNum2" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask2" type="button" name="rectNum1" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
-                    <button id="studLysol2" type="button" name="rectNum1" disabled="true" value="Lysol">Lysol</button>
+                    <button id="studLysol2" type="button" name="rectNum1" value="Lysol">Lysol</button>
                 </form></td>
                 <td rowspan="2">Aisleway</td>
                 <td><form id="rect3" action="rect_check.php">
@@ -80,7 +80,7 @@
                     <button id="addStudent3" name="rectNum3" type="button">+</button>
                     <button id="removeStudent3" name="rectNum3" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask3" type="button" name="rectNum1" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
-                    <button id="studLysol3" type="button" name="rectNum1" disabled="true" value="Lysol">Lysol</button>
+                    <button id="studLysol3" type="button" name="rectNum1" value="Lysol">Lysol</button>
                 </form></td>
             </tr>
             <tr>
@@ -91,7 +91,7 @@
                     <button id="addStudent5" name="rectNum5" type="button">+</button>
                     <button id="removeStudent5" name="rectNum5" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask5" type="button" name="rectNum1" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
-                    <button id="studLysol5" type="button" name="rectNum1" disabled="true" value="Lysol">Lysol</button>
+                    <button id="studLysol5" type="button" name="rectNum1" value="Lysol">Lysol</button>
                 </form></td>
                 <td><form id="rect4" action="rect_check.php">
                     Student Rectangle #4: 
@@ -99,7 +99,7 @@
                     <button id="addStudent4" name="rectNum4" type="button">+</button>
                     <button id="removeStudent4" name="rectNum4" type="button">&dash;</button> &ThickSpace; &ThickSpace;
                     <button id="studMask4" type="button" name="rectNum1" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
-                    <button id="studLysol4" type="button" name="rectNum1" disabled="true" value="Lysol">Lysol</button>
+                    <button id="studLysol4" type="button" name="rectNum1" value="Lysol">Lysol</button>
                 </form></td>
             </tr>
             <tr>
@@ -217,17 +217,20 @@
         let sendUrl = document.getElementById(inputId).action;
         if (buttonId.contians("instru")) {
             //Change the instuctor mask flag to true
-            someCheck(inputId,"I");
+            let data = "name=" + buttonId + "&" + "value=" + "I";
+            doAJAXsendForm(sendUrl,data);
             return;
         } else if (buttonId.contians("question")) {
             //Change the question rectangle mask flag to true
-            someCheck(inputId,"Q");
+            let data = "name=" + buttonId + "&" + "value=" + "I";
+            doAJAXsendForm(sendUrl,data);
             return;
         } else {
             //Grab the number of desk
             let deskNum = buttonId.charAt(8);
             //Change the mask flag in maskButton array coresponding to the desk number
-            someCheck(inputId,deskNum);
+            let data = "name=" + buttonId + "&" + "value=" + deskNum;
+            doAJAXsendForm(sendUrl,data);
             return;
         }
     }
@@ -238,24 +241,32 @@
         let sendUrl = document.getElementById(inputId).action;
         if (buttonId.contians("instru")) {
             //Change the instuctor mask flag to true
-            someCheck(inputId,"I");
+            let data = "name=" + buttonId + "&" + "value=" + "I";
+            doAJAXsendForm(sendUrl,data);
             return;
         } else {
             //Grab the number of desk
             let deskNum = buttonId.charAt(8);
             //Change the mask flag in maskButton array coresponding to the desk number
-            someCheck(inputId,deskNum);
+            let data = "name=" + buttonId + "&" + "value=" + deskNum;
+            doAJAXsendForm(sendUrl,data);
             return;
         }
     }
 
     //This func is called when the start class button is pressed
     function startClassClicked() {
-        
+        let buttonName = this.id;
+        let data = "name=" + buttonName + "&" + "value=" + "check";
+        doAJAXsendForm("rect_check.php",data);
+        return
     }
     //This func is called when the end class button is pressed
     function endClassClicked() {
-
+        let buttonName = this.id;
+        let data = "name=" + buttonName + "&" + "value=" + "check";
+        doAJAXsendForm("rect_check.php",data);
+        return;
     }
     //This func is called when the student enter button is pressed
     function studentEnterClicked() {
