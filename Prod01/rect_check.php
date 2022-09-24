@@ -1,4 +1,22 @@
 <?php 
+    $maskFlags = array(
+        "I" => false,
+        "1" => false,
+        "2" => false,
+        "3" => false,
+        "4" => false,
+        "5" => false,
+        "Q" => false,
+    );
+    $lysolFlags = array(
+        "I" => false,
+        "1" => false,
+        "2" => false,
+        "3" => false,
+        "4" => false,
+        "5" => false,
+    );
+    
     $rectName = htmlspecialchars($_GET["name"]);
     $rectVal = htmlspecialchars($_GET["value"]);
     if (str_contains($rectName,"rect")) {
@@ -23,6 +41,19 @@
         exit;
     } else if (str_contains($rectName,"masks")) {
         //Check if all students have masks
+        if (str_contains($rectVal,"check")) {
+            foreach ($maskFlags as $num => $maskFlag) {
+                if (!$maskFlag) {
+                    echo "Desk " . $num . " is not properly wearing a mask!";
+                    exit;
+                }
+            }
+        }
+        foreach ($maskFlags as $num => $maskFlag) {
+            if ($rectVal == $num) {
+                $maskFlag = true;
+            }
+        }
     } else if (str_contains($rectName,"lysol")) {
         //Check if all students have used the lysol
     }

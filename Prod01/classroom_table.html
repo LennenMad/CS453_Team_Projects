@@ -118,8 +118,8 @@
     const buttonsCollec = document.getElementsByTagName("button");
     let inputCollec = document.getElementsByTagName("input");
     let sanitizerButton = false;
-    let maskButtons = new Array(false,false,false,false,false,false,false);
-    let lysolButtons = new Array(false,false,false,false,false,false,false);
+    //let maskButtons = new Array(false,false,false,false,false,false,false);
+    //let lysolButtons = new Array(false,false,false,false,false,false,false);
     //console.log(buttonsCollec);
 
     //Adds an evevnt listern to the sanitizer button by id
@@ -204,6 +204,7 @@
         let buttonId = this.id;
         if (buttonId.contians("instru")) {
             //Change the instuctor mask flag to true
+            
         } else if (buttonId.contians("question")) {
             //Change the question rectangle mask flag to true
         } else {
