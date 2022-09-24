@@ -56,6 +56,19 @@
         }
     } else if (str_contains($rectName,"lysol")) {
         //Check if all students have used the lysol
+        if (str_contains($rectVal,"check")) {
+            foreach ($lysolFlags as $num => $lysolFlag) {
+                if (!$lysolFlag) {
+                    echo "Desk " . $num . " has not used their lysol!";
+                    exit;
+                }
+            }
+        }
+        foreach ($lysolFlags as $num => $lysolFlag) {
+            if ($rectVal == $num) {
+                $lysolFlag = true;
+            }
+        }
     }
 
     //echo "" . htmlspecialchars($_GET["value"]);
