@@ -39,7 +39,7 @@
             }
         }
         exit;
-    } else if (str_contains($rectName,"masks")) {
+    } else if (str_contains($rectName,"mask")) {
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
             foreach ($maskFlags as $num => $maskFlag) {
