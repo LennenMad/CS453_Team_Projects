@@ -18,10 +18,10 @@
     );
 
     if (!session_id()) {session_start();}
-    if (!isset($_SESSION['maskFlags'])) {$_SESSION['maskFlags'] = array($maskFlags);}
-    if (!isset($_SESSION['lysolFlags'])) {$_SESSION['lysolFlags'] = array($lysolFlags);}
+    if (!isset($_SESSION['maskFlags'])) {$_SESSION['maskFlags'] = $maskFlags;}
+    if (!isset($_SESSION['lysolFlags'])) {$_SESSION['lysolFlags'] = $lysolFlags;}
 
-    //print_r($_SESSION['maskFlags']); //For debugging
+    print_r($_SESSION['maskFlags']); //For debugging
     
     $rectName = htmlspecialchars($_GET["name"]);
     $rectVal = htmlspecialchars($_GET["value"]);
