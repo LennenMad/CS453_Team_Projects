@@ -1,20 +1,20 @@
 <?php 
     $maskFlags = array(
-        "I" => false,
         "1" => false,
         "2" => false,
         "3" => false,
         "4" => false,
         "5" => false,
         "Q" => false,
+        "I" => false,
     );
     $lysolFlags = array(
-        "I" => false,
         "1" => false,
         "2" => false,
         "3" => false,
         "4" => false,
         "5" => false,
+        "I" => false,
     );
     
     $rectName = htmlspecialchars($_GET["name"]);
@@ -45,11 +45,11 @@
             foreach ($maskFlags as $num => $maskFlag) {
                 if (!$maskFlag) {
                     if ($num = "I") {
-                        echo "Instructor is not properly wearing a mask!\n";
+                        echo "Instructor is not properly wearing a mask!<br>";
                     } else if ($num = "Q") {
-                        echo "Question Square is not properly wearing a mask!\n";
+                        echo "Question Square is not properly wearing a mask!<br>";
                     } else {
-                        echo "Desk " . $num . " is not properly wearing a mask!\n";
+                        echo "Desk " . $num . " is not properly wearing a mask!<br>";
                     }
                     //exit;
                 }
@@ -59,7 +59,7 @@
         foreach ($maskFlags as $num => $maskFlag) {
             if ($rectVal == $num) {
                 $maskFlag = true;
-                echo "Mask " . $num . " set to true.\n";
+                echo "Mask " . $num . " set to true.<br>";
             }
         }
         exit;
@@ -69,9 +69,9 @@
             foreach ($lysolFlags as $num => $lysolFlag) {
                 if (!$lysolFlag) {
                     if ($num = "I") {
-                        echo "Instructor has not used their Lysol!\n";
+                        echo "Instructor has not used their Lysol!<br>";
                     }  else {
-                        echo "Desk " . $num . " has not used their Lysol!\n";
+                        echo "Desk " . $num . " has not used their Lysol!<br>";
                     }
                     //exit;
                 }
@@ -81,7 +81,7 @@
         foreach ($lysolFlags as $num => $lysolFlag) {
             if ($rectVal == $num) {
                 $lysolFlag = true;
-                echo "Lysol " . $num . " set to true.\n";
+                echo "Lysol " . $num . " set to true.<br>";
             }
         }
         exit;

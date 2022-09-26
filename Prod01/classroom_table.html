@@ -125,21 +125,24 @@
     //Adds an evevnt listern to the sanitizer button by id
     document.getElementById("sanitizer").addEventListener("click",sanitizerClicked);
 
+    document.getElementById("addInstructor").addEventListener("click",addInstructorClicked);
+    document.getElementById("removeInstructor").addEventListener("click",removeInstructorClicked);
+
     //Iterates through each button element and attaches the proper event listener to each.
     for (let i=0; i<buttonsCollec.length; i++) {
         //console.log(buttonsCollec.item(i));
         let someButtonElm = buttonsCollec.item(i);
-        if (someButtonElm.id.includes("add")){
+        if (someButtonElm.id.includes("addStud")){
             someButtonElm.addEventListener("click", addStudentClicked);
-        } else if (someButtonElm.id.includes("remove")){
+        } else if (someButtonElm.id.includes("removeStud")){
             someButtonElm.addEventListener("click", removeStudentClicked);
         } else if (someButtonElm.id.includes("studentEnter")) {
             someButtonElm.addEventListener("click", studentEnterClicked);
         } else if (someButtonElm.id.includes("studentExit")) {
             someButtonElm.addEventListener("click", studentExitClicked);
-        } else if (someButtonElm.id.includes("studMask")) {
+        } else if (someButtonElm.id.includes("Mask")) {
             someButtonElm.addEventListener("click", maskButtonClicked);
-        } else if (someButtonElm.id.includes("studLysol")) {
+        } else if (someButtonElm.id.includes("Lysol")) {
             someButtonElm.addEventListener("click", lysolButtonClicked);
         } else if (someButtonElm.id.includes("startClass")) {
             someButtonElm.addEventListener("click", startClassClicked);
