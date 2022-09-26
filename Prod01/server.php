@@ -65,8 +65,8 @@
         } else {
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($rectVal == $num) {
+                    $_SESSION['maskFlag'][$num] = 1;
                     echo " " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ";
-                    $maskFlags[$num] = 1;
                     echo "Mask " . $num . " set to true.";
                     break;
                 }
@@ -91,6 +91,7 @@
             foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
                 if ($rectVal == $num) {
                     $_SESSION['lysolFlags'][$num] = 1;
+                    echo " " . $num . "=>" . $lysolFlag . " " . $_SESSION['lysolFlags'][$num] . " ";
                     echo "Lysol " . $num . " set to true.";
                     break;
                 }
