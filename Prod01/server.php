@@ -1,4 +1,5 @@
 <?php 
+    /*
     $maskFlags = array(
         "1" => 0,
         "2" => 0,
@@ -16,10 +17,30 @@
         "5" => 0,
         "I" => 0,
     );
+    */
 
     if (!session_id()) {session_start();}
-    if (!isset($_SESSION['maskFlags'])) {$_SESSION['maskFlags'] = $maskFlags;}
-    if (!isset($_SESSION['lysolFlags'])) {$_SESSION['lysolFlags'] = $lysolFlags;}
+    if (!isset($_SESSION['maskFlags'])) {
+        $_SESSION['maskFlags'] = array(
+            "1" => 0,
+            "2" => 0,
+            "3" => 0,
+            "4" => 0,
+            "5" => 0,
+            "Q" => 0,
+            "I" => 0,
+        );
+    }
+    if (!isset($_SESSION['lysolFlags'])) {
+        $_SESSION['lysolFlags'] = array(
+            "1" => 0,
+            "2" => 0,
+            "3" => 0,
+            "4" => 0,
+            "5" => 0,
+            "I" => 0,
+        );
+    }
 
     print_r($_SESSION['maskFlags']); //For debugging
     
