@@ -43,7 +43,7 @@
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
             foreach ($maskFlags as $num => $maskFlag) {
-                if (!$maskFlag) {
+                if (!$maskFlags[$num]) {
                     if ($num = "I") {
                         echo "Instructor is not properly wearing a mask!<br>";
                     } else if ($num = "Q") {
@@ -58,7 +58,7 @@
         }
         foreach ($maskFlags as $num => $maskFlag) {
             if ($rectVal == $num) {
-                $maskFlag = true;
+                $maskFlags[$num] = true;
                 echo "Mask " . $num . " set to true.<br>";
             }
         }
@@ -67,7 +67,7 @@
         //Check if all students have used the lysol
         if (str_contains($rectVal,"check")) {
             foreach ($lysolFlags as $num => $lysolFlag) {
-                if (!$lysolFlag) {
+                if (!$lysolFlags[$num]) {
                     if ($num = "I") {
                         echo "Instructor has not used their Lysol!<br>";
                     }  else {
@@ -80,7 +80,7 @@
         }
         foreach ($lysolFlags as $num => $lysolFlag) {
             if ($rectVal == $num) {
-                $lysolFlag = true;
+                $lysolFlags[$num] = true;
                 echo "Lysol " . $num . " set to true.<br>";
             }
         }
