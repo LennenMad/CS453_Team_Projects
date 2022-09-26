@@ -47,11 +47,11 @@
                     echo ($maskFlag);
                     echo ($maskFlags[$num]);
                     if ($num = "I") {
-                        echo "Instructor is not properly wearing a mask!<br>";
+                        echo "<p>Instructor is not properly wearing a mask!<br></p>";
                     } else if ($num = "Q") {
-                        echo "Question Square is not properly wearing a mask!<br>";
+                        echo "<p>Question Square is not properly wearing a mask!<br></p>";
                     } else {
-                        echo "Desk " . $num . " is not properly wearing a mask!<br>";
+                        echo "<p>Desk " . $num . " is not properly wearing a mask!<br></p>";
                     }
                     //exit;
                 }
@@ -61,7 +61,7 @@
         foreach ($maskFlags as $num => $maskFlag) {
             if ($rectVal == $num) {
                 $maskFlags[$num] = true;
-                echo "Mask " . $num . " set to true.<br>";
+                echo "<p>Mask " . $num . " set to true.<br></p>";
             }
         }
         exit;

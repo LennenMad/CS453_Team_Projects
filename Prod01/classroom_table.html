@@ -42,11 +42,11 @@
                 <td rowspan="3">Aisleway</td>
                 <td><form id="instructor" action="server.php">
                     Instructor Rectangle:
-                    <input type="number" id="instructor" name="instructorInput" min="0" max="6" value="0"></input><br>
-                    <button id="addInstructor" name="instructor" type="button">+</button>
-                    <button id="removeInstructor" name="instructor" type="button">&dash;</button> &ThickSpace; &ThickSpace;
-                    <button id="instruMask" type="button" name="instructor" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
-                    <button id="intruLysol" type="button" name="instructor" value="Lysol">Lysol</button>
+                    <input type="number" id="rectInstructor" name="instructor" min="0" max="6" value="0"></input><br>
+                    <button id="addInstructor" name="rectInstructor" type="button">+</button>
+                    <button id="removeInstructor" name="rectInstructor" type="button">&dash;</button> &ThickSpace; &ThickSpace;
+                    <button id="instruMask" type="button" name="rectInstructor" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
+                    <button id="intruLysol" type="button" name="rectInstructor" value="Lysol">Lysol</button>
                 </form></td>
                 <td colspan="2"><form id="rectQ" action="server.php">
                     Student Question Rectangle: 
@@ -125,8 +125,8 @@
     //Adds an evevnt listern to the sanitizer button by id
     document.getElementById("sanitizer").addEventListener("click",sanitizerClicked);
 
-    //document.getElementById("addInstructor").addEventListener("click",addInstructorClicked);
-    //document.getElementById("removeInstructor").addEventListener("click",removeInstructorClicked);
+    document.getElementById("addInstructor").addEventListener("click",addInstructorClicked);
+    document.getElementById("removeInstructor").addEventListener("click",removeInstructorClicked);
 
     //Iterates through each button element and attaches the proper event listener to each.
     for (let i=0; i<buttonsCollec.length; i++) {
@@ -195,6 +195,21 @@
         sanitizerButton = true;
     }
 
+    function addInstructorClicked() {
+        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
+        entranceStudents--;
+        document.getElementById("entranceVal").innerHTML = entranceStudents;
+        let inputId = this.name;
+        document.getElementById(inputId).stepUp();
+        someInput(inputId);
+    }
+    function removeInstructorClicked() {
+        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
+        entranceStudents++;
+        document.getElementById("entranceVal").innerHTML = entranceStudents;
+        let inputId = this.name;
+        document.getElementById(inputId).stepDown();
+    }
     //This func is called when any plus button is pressed
     function addStudentClicked() {
         let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
