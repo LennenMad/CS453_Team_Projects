@@ -129,9 +129,9 @@
     for (let i=0; i<buttonsCollec.length; i++) {
         //console.log(buttonsCollec.item(i));
         let someButtonElm = buttonsCollec.item(i);
-        if (someButtonElm.id.includes("addStudent")){
+        if (someButtonElm.id.includes("add")){
             someButtonElm.addEventListener("click", addStudentClicked);
-        } else if (someButtonElm.id.includes("removeStudent")){
+        } else if (someButtonElm.id.includes("remove")){
             someButtonElm.addEventListener("click", removeStudentClicked);
         } else if (someButtonElm.id.includes("studentEnter")) {
             someButtonElm.addEventListener("click", studentEnterClicked);
