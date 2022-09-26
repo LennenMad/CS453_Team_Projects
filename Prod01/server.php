@@ -19,7 +19,27 @@
     );
     */
 
-    if (!session_id()) {session_start();}
+    if (!session_id()) {
+        session_start();
+        $_SESSION['maskFlags'] = array(
+            "1" => 0,
+            "2" => 0,
+            "3" => 0,
+            "4" => 0,
+            "5" => 0,
+            "Q" => 0,
+            "I" => 0,
+        );
+        $_SESSION['lysolFlags'] = array(
+            "1" => 0,
+            "2" => 0,
+            "3" => 0,
+            "4" => 0,
+            "5" => 0,
+            "I" => 0,
+        );
+    }
+    /*
     if (!isset($_SESSION['maskFlags'])) {
         $_SESSION['maskFlags'] = array(
             "1" => 0,
@@ -41,6 +61,7 @@
             "I" => 0,
         );
     }
+    */
 
     print_r($_SESSION['maskFlags']); //For debugging
     
@@ -87,7 +108,7 @@
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($rectVal == $num) {
                     $_SESSION['maskFlag'][$num] = 1;
-                    print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
+                    print_r(" " . $num . "=>" . $maskFlag . " As session:" . $_SESSION['maskFlags'][$num] . " ");
                     echo "Mask " . $num . " set to true.";
                     break;
                 }
