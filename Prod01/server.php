@@ -44,8 +44,8 @@
         if (str_contains($rectVal,"check")) {
             foreach ($maskFlags as $num => $maskFlag) {
                 if (!$maskFlags[$num]) {
-                    echo ($maskFlag);
-                    echo ($maskFlags[$num]);
+                    echo $maskFlag;
+                    echo $maskFlags[$num];
                     if ($num = "I") {
                         echo "<p>Instructor is not properly wearing a mask!<br></p>";
                     } else if ($num = "Q") {
@@ -60,6 +60,8 @@
         }
         foreach ($maskFlags as $num => $maskFlag) {
             if ($rectVal == $num) {
+                echo $maskFlag;
+                echo $maskFlags[$num];
                 $maskFlags[$num] = true;
                 echo "<p>Mask " . $num . " set to true.<br></p>";
             }
