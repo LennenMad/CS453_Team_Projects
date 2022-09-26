@@ -241,7 +241,7 @@
     function lysolButtonClicked() {
         let buttonId = this.id;
         let inputElm = document.getElementById(this.name);
-        let sendUrl = document.getElementById(inputElm.id).action;
+        let sendUrl = document.getElementById(inputElm.name).action;
         if (buttonId.includes("instru")) {
             //Change the instuctor mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
