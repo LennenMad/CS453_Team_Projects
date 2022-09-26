@@ -213,8 +213,11 @@
     //This func is called when any mask button is pressed
     function maskButtonClicked() {
         let buttonId = this.id;
+        console.log(buttonId);
         let inputElm = document.getElementById(this.name);
+        console.log(inputElm);
         let sendUrl = document.getElementById(inputElm.id).action;
+        console.log(sendUrl)
         if (buttonId.includes("instru")) {
             //Change the instuctor mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
