@@ -1,20 +1,20 @@
 <?php 
     $maskFlags = array(
-        "1" => false,
-        "2" => false,
-        "3" => false,
-        "4" => false,
-        "5" => false,
-        "Q" => false,
-        "I" => false,
+        "1" => 0,
+        "2" => 0,
+        "3" => 0,
+        "4" => 0,
+        "5" => 0,
+        "Q" => 0,
+        "I" => 0,
     );
     $lysolFlags = array(
-        "1" => false,
-        "2" => false,
-        "3" => false,
-        "4" => false,
-        "5" => false,
-        "I" => false,
+        "1" => 0,
+        "2" => 0,
+        "3" => 0,
+        "4" => 0,
+        "5" => 0,
+        "I" => 0,
     );
     
     $rectName = htmlspecialchars($_GET["name"]);
@@ -43,7 +43,7 @@
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
             foreach ($maskFlags as $num => $maskFlag) {
-                if (!$maskFlags[$num]) {
+                if ($maskFlag != 1) {
                     echo $maskFlag;
                     echo $maskFlags[$num];
                     if ($num = "I") {
@@ -57,21 +57,23 @@
                 }
             }
             exit;
-        }
-        foreach ($maskFlags as $num => $maskFlag) {
-            if ($rectVal == $num) {
-                echo $maskFlag;
-                echo $maskFlags[$num];
-                $maskFlags[$num] = true;
-                echo "<p>Mask " . $num . " set to true.<br></p>";
+        } else {
+            foreach ($maskFlags as $num => $maskFlag) {
+                if ($rectVal == $num) {
+                    echo $maskFlag;
+                    echo $maskFlags[$num];
+                    $maskFlags[$num] = 1;
+                    echo "<p>Mask " . $num . " set to true.<br></p>";
+                    break;
+                }
             }
+            exit;
         }
-        exit;
     } else if (str_contains($rectName,"Lysol")) {
         //Check if all students have used the lysol
         if (str_contains($rectVal,"check")) {
             foreach ($lysolFlags as $num => $lysolFlag) {
-                if (!$lysolFlags[$num]) {
+                if ($lysolFlag != 1) {
                     if ($num = "I") {
                         echo "Instructor has not used their Lysol!<br>";
                     }  else {
@@ -81,14 +83,16 @@
                 }
             }
             exit;
-        }
-        foreach ($lysolFlags as $num => $lysolFlag) {
-            if ($rectVal == $num) {
-                $lysolFlags[$num] = true;
-                echo "Lysol " . $num . " set to true.<br>";
+        } else {
+            foreach ($lysolFlags as $num => $lysolFlag) {
+                if ($rectVal == $num) {
+                    $lysolFlags[$num] = 1;
+                    echo "Lysol " . $num . " set to true.<br>";
+                    break;
+                }
             }
+            exit;
         }
-        exit;
     }
 
     //echo "" . htmlspecialchars($_GET["value"]);
