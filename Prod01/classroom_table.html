@@ -40,7 +40,7 @@
                     <button id="sanitizer" type="button" value="Sanitizer">Sanitizer</button>
                 </form></td>
                 <td rowspan="3">Aisleway</td>
-                <td><form id="instructor" action="rect_check.php">
+                <td><form id="instructor" action="server.php">
                     Instructor Rectangle:
                     <input type="number" id="instructor" name="instructorInput" min="0" max="6" value="0"></input><br>
                     <button id="addInstructor" name="instructor" type="button">+</button>
@@ -48,7 +48,7 @@
                     <button id="instruMask" type="button" name="instructor" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="intruLysol" type="button" name="instructor" value="Lysol">Lysol</button>
                 </form></td>
-                <td colspan="2"><form id="rectQ" action="rect_check.php">
+                <td colspan="2"><form id="rectQ" action="server.php">
                     Student Question Rectangle: 
                     <input type="number" id="rectNumQ" name="rectQ" min="0" max="6" value="0"></input><br>
                     <button id="addStudentQ" name="rectNumQ" type="button">+</button>
@@ -57,7 +57,7 @@
                 </form></td>
             </tr>
             <tr>
-                <td><form id="rect1" action="rect_check.php">
+                <td><form id="rect1" action="server.php">
                     Student Rectangle #1: 
                     <input type="number" id="rectNum1" name="rect1" readOnly="true" min="0" max="6" value="0"></input><br>
                     <button id="addStudent1" name="rectNum1" type="button">+</button>
@@ -65,7 +65,7 @@
                     <button id="studMask1" type="button" name="rectNum1" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol1" type="button" name="rectNum1" value="Lysol">Lysol</button>
                 </form></td>
-                <td><form id="rect2" action="rect_check.php">
+                <td><form id="rect2" action="server.php">
                     Student Rectangle #2: 
                     <input type="number" id="rectNum2" name="rect2" readOnly="true" min="0" max="6" value="0"></input><br>
                     <button id="addStudent2" name="rectNum2" type="button">+</button>
@@ -74,7 +74,7 @@
                     <button id="studLysol2" type="button" name="rectNum2" value="Lysol">Lysol</button>
                 </form></td>
                 <td rowspan="2">Aisleway</td>
-                <td><form id="rect3" action="rect_check.php">
+                <td><form id="rect3" action="server.php">
                     Student Rectangle #3: 
                     <input type="number" id="rectNum3" name="rect3" readOnly="true" min="0" max="6" value="0"></input><br>
                     <button id="addStudent3" name="rectNum3" type="button">+</button>
@@ -85,7 +85,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><form id="rect5" action="rect_check.php">
+                <td><form id="rect5" action="server.php">
                     Student Rectangle #5: 
                     <input type="number" id="rectNum5" name="rect5" readOnly="true" min="0" max="6" value="0"></input><br>
                     <button id="addStudent5" name="rectNum5" type="button">+</button>
@@ -93,7 +93,7 @@
                     <button id="studMask5" type="button" name="rectNum5" value="Mask">Mask</button> &ThickSpace; &ThickSpace;
                     <button id="studLysol5" type="button" name="rectNum5" value="Lysol">Lysol</button>
                 </form></td>
-                <td><form id="rect4" action="rect_check.php">
+                <td><form id="rect4" action="server.php">
                     Student Rectangle #4: 
                     <input type="number" id="rectNum4" name="rect4" readOnly="true" min="0" max="6" value="0"></input><br>
                     <button id="addStudent4" name="rectNum4" type="button">+</button>
@@ -258,14 +258,14 @@
     function startClassClicked() {
         let buttonName = this.id;
         let data = "name=" + buttonName + "&" + "value=" + "check";
-        doAJAXsendForm("rect_check.php",data);
+        doAJAXsendForm("server.php",data);
         return
     }
     //This func is called when the end class button is pressed
     function endClassClicked() {
         let buttonName = this.id;
         let data = "name=" + buttonName + "&" + "value=" + "check";
-        doAJAXsendForm("rect_check.php",data);
+        doAJAXsendForm("server.php",data);
         return;
     }
     //This func is called when the student enter button is pressed
