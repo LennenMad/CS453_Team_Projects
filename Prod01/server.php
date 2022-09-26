@@ -39,7 +39,7 @@
             }
         }
         exit;
-    } else if (str_contains($rectName,"masks")) {
+    } else if (str_contains($rectName,"start")) {
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
             foreach ($maskFlags as $num => $maskFlag) {
@@ -60,7 +60,7 @@
                 $maskFlag = true;
             }
         }
-    } else if (str_contains($rectName,"lysol")) {
+    } else if (str_contains($rectName,"end")) {
         //Check if all students have used the lysol
         if (str_contains($rectVal,"check")) {
             foreach ($lysolFlags as $num => $lysolFlag) {
