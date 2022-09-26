@@ -45,40 +45,46 @@
             foreach ($maskFlags as $num => $maskFlag) {
                 if (!$maskFlag) {
                     if ($num = "I") {
-                        echo "Instructor is not properly wearing a mask!";
+                        echo "Instructor is not properly wearing a mask!\n";
                     } else if ($num = "Q") {
-                        echo "Question Square is not properly wearing a mask";
+                        echo "Question Square is not properly wearing a mask!\n";
                     } else {
-                        echo "Desk " . $num . " is not properly wearing a mask!";
+                        echo "Desk " . $num . " is not properly wearing a mask!\n";
                     }
-                    exit;
+                    //exit;
                 }
             }
+            exit;
         }
         foreach ($maskFlags as $num => $maskFlag) {
             if ($rectVal == $num) {
                 $maskFlag = true;
+                echo "Mask " . $num . " set to true.\n";
             }
         }
+        exit;
     } else if (str_contains($rectName,"end")) {
         //Check if all students have used the lysol
         if (str_contains($rectVal,"check")) {
             foreach ($lysolFlags as $num => $lysolFlag) {
                 if (!$lysolFlag) {
                     if ($num = "I") {
-                        echo "Instructor has not used their Lysol!";
+                        echo "Instructor has not used their Lysol!\n";
                     }  else {
-                        echo "Desk " . $num . " has not used their Lysol!";
+                        echo "Desk " . $num . " has not used their Lysol!\n";
                     }
-                    exit;
+                    //exit;
                 }
             }
+            exit;
         }
         foreach ($lysolFlags as $num => $lysolFlag) {
             if ($rectVal == $num) {
                 $lysolFlag = true;
+                echo "Lysol " . $num . " set to true.\n";
             }
         }
+        exit;
     }
 
     //echo "" . htmlspecialchars($_GET["value"]);
