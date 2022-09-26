@@ -16,6 +16,12 @@
         "5" => 0,
         "I" => 0,
     );
+
+    if (!session_id()) @ session_start();
+    if (!isset($_SESSION['maskFlags'])) $_SESSION['maskFlags'] = $maskFlags;
+    if (!isset($_SESSION['lysolFlags'])) $_SESSION['lysolFlags'] = $lysolFlags;
+
+    echo $_SESSION; //For debugging
     
     $rectName = htmlspecialchars($_GET["name"]);
     $rectVal = htmlspecialchars($_GET["value"]);
@@ -42,11 +48,11 @@
     } else if (str_contains($rectName,"Mask")) {
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
-            foreach ($maskFlags as $num => $maskFlag) {
+            foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($maskFlag != 1) {
                     echo $num;
                     echo $maskFlag;
-                    echo $maskFlags[$num];
+                    echo $_SESSION['maskFlags'][$num];
                     if ($num = "I") {
                         echo "Instructor is not properly wearing a mask!";
                     } else if ($num = "Q") {
@@ -59,11 +65,11 @@
             }
             exit;
         } else {
-            foreach ($maskFlags as $num => $maskFlag) {
+            foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($rectVal == $num) {
                     echo $num;
                     echo $maskFlag;
-                    echo $maskFlags[$num];
+                    echo $_SESSION['maskFlags'][$num];
                     $maskFlags[$num] = 1;
                     echo "Mask " . $num . " set to true.";
                     break;
@@ -74,7 +80,7 @@
     } else if (str_contains($rectName,"Lysol")) {
         //Check if all students have used the lysol
         if (str_contains($rectVal,"check")) {
-            foreach ($lysolFlags as $num => $lysolFlag) {
+            foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
                 if ($lysolFlag != 1) {
                     if ($num = "I") {
                         echo "Instructor has not used their Lysol!";
@@ -86,9 +92,9 @@
             }
             exit;
         } else {
-            foreach ($lysolFlags as $num => $lysolFlag) {
+            foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
                 if ($rectVal == $num) {
-                    $lysolFlags[$num] = 1;
+                    $_SESSION['lysolFlags'][$num] = 1;
                     echo "Lysol " . $num . " set to true.";
                     break;
                 }
