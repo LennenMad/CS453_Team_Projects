@@ -17,11 +17,11 @@
         "I" => 0,
     );
 
-    if (!session_id()) @ session_start();
-    if (!isset($_SESSION['maskFlags'])) $_SESSION['maskFlags'] = $maskFlags;
-    if (!isset($_SESSION['lysolFlags'])) $_SESSION['lysolFlags'] = $lysolFlags;
+    if (!session_id()) {session_start();}
+    if (!isset($_SESSION['maskFlags'])) {$_SESSION['maskFlags'] = array($maskFlags);}
+    if (!isset($_SESSION['lysolFlags'])) {$_SESSION['lysolFlags'] = array($lysolFlags);}
 
-    echo $_SESSION; //For debugging
+    echo $_SESSION['maskFlags']; //For debugging
     
     $rectName = htmlspecialchars($_GET["name"]);
     $rectVal = htmlspecialchars($_GET["value"]);
@@ -50,9 +50,7 @@
         if (str_contains($rectVal,"check")) {
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($maskFlag != 1) {
-                    echo $num;
-                    echo $maskFlag;
-                    echo $_SESSION['maskFlags'][$num];
+                    echo " " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ";
                     if ($num = "I") {
                         echo "Instructor is not properly wearing a mask!";
                     } else if ($num = "Q") {
@@ -67,9 +65,7 @@
         } else {
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($rectVal == $num) {
-                    echo $num;
-                    echo $maskFlag;
-                    echo $_SESSION['maskFlags'][$num];
+                    echo " " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ";
                     $maskFlags[$num] = 1;
                     echo "Mask " . $num . " set to true.";
                     break;
