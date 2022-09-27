@@ -26,6 +26,6 @@
 <html>
 <head>
     <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="5; URL=classroom_table.html" />
+    <meta http-equiv="refresh" content="1; URL=classroom_table.html" />
 </head>
 </html>
