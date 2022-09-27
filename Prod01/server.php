@@ -19,13 +19,13 @@
     );
     */
 
-    print_r(session_id());
+    //print_r(session_id());
     if (!session_id()) {
         echo "No session. Making one... ";
         //$randId = rand(1,100);
         session_start();
         session_create_id();
-        print_r(session_id());
+        //print_r(session_id());
     }
     
     /*
@@ -52,7 +52,7 @@
     }
     */
 
-    var_dump($_SESSION); //For debugging
+    //var_dump($_SESSION); //For debugging
     
     $rectName = htmlspecialchars($_GET["name"]);
     $rectVal = htmlspecialchars($_GET["value"]);
@@ -81,13 +81,13 @@
         if (str_contains($rectVal,"check")) {
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($maskFlag != '1') {
-                    print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
+                    //print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
                     if ($num == "I") {
-                        echo "Instructor is not properly wearing a mask!";
+                        echo "alert(Instructor is not properly wearing a mask!)";
                     } else if ($num == "Q") {
-                        echo "Question Square is not properly wearing a mask!";
+                        echo "alert(Question Square is not properly wearing a mask!)";
                     } else {
-                        echo "Desk " . $num . " is not properly wearing a mask!";
+                        echo "alert(Desk " . $num . " is not properly wearing a mask!)";
                     }
                     //exit;
                 }
@@ -97,8 +97,8 @@
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($rectVal == $num) {
                     $_SESSION['maskFlags'][$num] = '1';
-                    print_r(" " . $num . "=>" . $maskFlag . " As session:" . $_SESSION['maskFlags'][$num] . " ");
-                    echo "Mask " . $num . " set to true.";
+                    //print_r(" " . $num . "=>" . $maskFlag . " As session:" . $_SESSION['maskFlags'][$num] . " ");
+                    //echo "Mask " . $num . " set to true.";
                     break;
                 }
             }
@@ -109,11 +109,11 @@
         //Check if all students have used the lysol
         if (str_contains($rectVal,"check")) {
             foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
-                if ($lysolFlag != 1) {
+                if ($lysolFlag != '1') {
                     if ($num == "I") {
-                        echo "Instructor has not used their Lysol!";
+                        echo "alert(Instructor has not used their Lysol!)";
                     }  else {
-                        echo "Desk " . $num . " has not used their Lysol!";
+                        echo "alert(Desk " . $num . " has not used their Lysol!)";
                     }
                     //exit;
                 }
@@ -122,9 +122,9 @@
         } else {
             foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
                 if ($rectVal == $num) {
-                    $_SESSION['lysolFlags'][$num] = 1;
-                    echo " " . $num . "=>" . $lysolFlag . " " . $_SESSION['lysolFlags'][$num] . " ";
-                    echo "Lysol " . $num . " set to true.";
+                    $_SESSION['lysolFlags'][$num] = '1';
+                    //echo " " . $num . "=>" . $lysolFlag . " " . $_SESSION['lysolFlags'][$num] . " ";
+                    //echo "Lysol " . $num . " set to true.";
                     break;
                 }
             }
