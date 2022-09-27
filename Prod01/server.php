@@ -53,12 +53,13 @@
     */
 
     //var_dump($_SESSION); //For debugging
-    
+    //get name and value from request
     $rectName = htmlspecialchars($_GET["name"]);
     $rectVal = htmlspecialchars($_GET["value"]);
+    //if data from html is for desk val check if there are too many students at desk
     if (str_contains($rectName,"rect")) {
         if ($rectVal >= 2) {
-            //Check for which student desk
+            //Check for which student desk and send alert
             if (str_ends_with($rectName,"1")) {
                 echo "alert('Only one student should be at Dest 1!')";
             } else if (str_ends_with($rectName,"2")) {
@@ -74,7 +75,9 @@
             } else {
                 echo "alert('Only the Instructor should be up front!')";
             }
-        } else if ($rectVal == 1){
+        } 
+        //when the first person enters a square, enable the mask and lysol check
+        else if ($rectVal == 1){
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if (str_ends_with($rectName,$num)) {
                     $_SESSION['maskFlags'][$num] = '0';
@@ -99,6 +102,7 @@
         
         exit;
     }
+    //perform a mask check if the value sent is check, otherwise set the mask val to 1
     if (str_contains($rectName,"Mask")) {
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
@@ -131,6 +135,7 @@
             //exit;
         }
     }
+    //erform a lysol check if the value sent is check, otherwise set the lysol val to 1
     if (str_contains($rectName,"Lysol")) {
         //Check if all students have used the lysol
         if (str_contains($rectVal,"check")) {
