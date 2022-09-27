@@ -82,7 +82,7 @@
                     //echo "Mask " . $num . " set to true.";
                     break;
                 } else if (str_contains($rectName, "Instru")) {
-                    $_SESSION['maskFlags'][$num] = '0';
+                    $_SESSION['maskFlags']["I"] = '0';
                 }
             }
             foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
@@ -92,7 +92,7 @@
                     //echo "Lysol " . $num . " set to true.";
                     break;
                 } else if (str_contains($rectName, "Instru")) {
-                    $_SESSION['maskFlags'][$num] = '0';
+                    $_SESSION['maskFlags']["I"] = '0';
                 }
             }
         }
