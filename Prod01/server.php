@@ -107,7 +107,7 @@
         } else {
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($rectVal == $num) {
-                    $_SESSION['maskFlag'][$num] = 1;
+                    $_SESSION['maskFlags'][$num] = 1;
                     print_r(" " . $num . "=>" . $maskFlag . " As session:" . $_SESSION['maskFlags'][$num] . " ");
                     echo "Mask " . $num . " set to true.";
                     break;
