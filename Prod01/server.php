@@ -81,7 +81,7 @@
                     //print_r(" " . $num . "=>" . $maskFlag . " As session:" . $_SESSION['maskFlags'][$num] . " ");
                     //echo "Mask " . $num . " set to true.";
                     break;
-                } else if (str_contains($rectName, "instru")) {
+                } else if (str_contains($rectName, "Instru")) {
                     $_SESSION['maskFlags'][$num] = '0';
                 }
             }
@@ -91,7 +91,7 @@
                     //echo " " . $num . "=>" . $lysolFlag . " " . $_SESSION['lysolFlags'][$num] . " ";
                     //echo "Lysol " . $num . " set to true.";
                     break;
-                } else if (str_contains($rectName, "instru")) {
+                } else if (str_contains($rectName, "Instru")) {
                     $_SESSION['maskFlags'][$num] = '0';
                 }
             }
