@@ -76,10 +76,12 @@
             }
         }
         exit;
-    } else if (str_contains($rectName,"Mask")) {
+    }
+    if (str_contains($rectName,"Mask")) {
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
+                if ($lysolFlag != '2') {
                 if ($maskFlag != '1') {
                     //print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
                     if ($num == "I") {
@@ -90,6 +92,7 @@
                         echo "alert('Desk " . $num . " is not properly wearing a mask!')";
                     }
                     exit;
+                }
                 }
             }
             exit;
@@ -102,13 +105,15 @@
                     break;
                 }
             }
-            session_commit();
-            exit;
+            //session_commit();
+            //exit;
         }
-    } else if (str_contains($rectName,"Lysol")) {
+    }
+    if (str_contains($rectName,"Lysol")) {
         //Check if all students have used the lysol
         if (str_contains($rectVal,"check")) {
             foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
+                if ($lysolFlag != '2') {
                 if ($lysolFlag != '1') {
                     if ($num == "I") {
                         echo "alert('Instructor has not used their Lysol!')";
@@ -116,6 +121,7 @@
                         echo "alert('Desk " . $num . " has not used their Lysol!')";
                     }
                     exit;
+                }
                 }
             }
             exit;
@@ -128,10 +134,10 @@
                     break;
                 }
             }
-            session_commit();
-            exit;
         }
     }
+    session_commit();
+    exit;
 
     //echo "" . htmlspecialchars($_GET["value"]);
     
