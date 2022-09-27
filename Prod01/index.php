@@ -1,5 +1,4 @@
 <?php
-if (!session_id()) {
     echo "No session. Making one... ";
     //$randId = rand(1,100);
     session_start();
@@ -22,7 +21,6 @@ if (!session_id()) {
         "5" => 0,
         "I" => 0,
     );
-}
 ?>
 <!DOCTYPE html>
 <html>
