@@ -19,6 +19,7 @@
     );
     */
 
+    print_r(session_id());
     if (!session_id()) {
         echo "No session. Making one... ";
         //$randId = rand(1,100);
