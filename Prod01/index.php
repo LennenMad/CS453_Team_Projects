@@ -28,6 +28,7 @@
 <html>
 <head>
     <title>Redirecting...</title>
+    <!-- This will redirect to desired page on load. -->
     <meta http-equiv="refresh" content="1; URL=classroom_table.html" />
 </head>
 </html>
