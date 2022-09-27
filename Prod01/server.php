@@ -83,11 +83,11 @@
                 if ($maskFlag != '1') {
                     //print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
                     if ($num == "I") {
-                        echo "alert(Instructor is not properly wearing a mask!)";
+                        echo "alert('Instructor is not properly wearing a mask!')";
                     } else if ($num == "Q") {
-                        echo "alert(Question Square is not properly wearing a mask!)";
+                        echo "alert('Question Square is not properly wearing a mask!')";
                     } else {
-                        echo "alert(Desk " . $num . " is not properly wearing a mask!)";
+                        echo "alert('Desk " . $num . " is not properly wearing a mask!')";
                     }
                     exit;
                 }
@@ -111,9 +111,9 @@
             foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
                 if ($lysolFlag != '1') {
                     if ($num == "I") {
-                        echo "alert(Instructor has not used their Lysol!)";
+                        echo "alert('Instructor has not used their Lysol!')";
                     }  else {
-                        echo "alert(Desk " . $num . " has not used their Lysol!)";
+                        echo "alert('Desk " . $num . " has not used their Lysol!')";
                     }
                     exit;
                 }
