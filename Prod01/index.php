@@ -1,9 +1,11 @@
 <?php
     echo "No session. Making one... ";
     //$randId = rand(1,100);
+    // create new session and id
     session_start();
     session_create_id();
     print_r(session_id());
+    //set session variables
     $_SESSION['maskFlags'] = array(
         "1" => '2',
         "2" => '2',
