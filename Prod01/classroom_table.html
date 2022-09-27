@@ -115,16 +115,17 @@
 <script id="classroom_script">
     //Potentially could use "onchange" event to check the number of students
 
+    //collection of button elements for adding events listeners later
     const buttonsCollec = document.getElementsByTagName("button");
     let inputCollec = document.getElementsByTagName("input");
-    let sanitizerButton = false;
+    let sanitizerButton = false; //global var changed on sanitizer button press, when true, 
+                                //allows student to leave room without alert then toggled back to false
     //let maskButtons = new Array(false,false,false,false,false,false,false);
     //let lysolButtons = new Array(false,false,false,false,false,false,false);
     //console.log(buttonsCollec);
 
-    //Adds an evevnt listern to the sanitizer button by id
+    //Adds an event listener to buttons by id
     document.getElementById("sanitizer").addEventListener("click",sanitizerClicked);
-
     document.getElementById("addInstructor").addEventListener("click",addInstructorClicked);
     document.getElementById("removeInstructor").addEventListener("click",removeInstructorClicked);
 
@@ -195,47 +196,52 @@
         sanitizerButton = true;
     }
 
+    //Add a person to the instructor square on + button click
     function addInstructorClicked() {
-        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
-        entranceStudents--;
-        document.getElementById("entranceVal").innerHTML = entranceStudents;
-        let inputId = this.name;
-        document.getElementById(inputId).stepUp();
-        someInput(inputId);
+        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML); //get amt of students in entrance square
+        entranceStudents--; //"move" from entrance to instr square
+        document.getElementById("entranceVal").innerHTML = entranceStudents; //update entrace with new person count
+        let inputId = this.name; //get name of container that called this function
+        document.getElementById(inputId).stepUp(); //increment student count in current square
+        someInput(inputId); //send current count to server to check if count is too high
     }
+    //Remove a person from the instructor square on - button click
     function removeInstructorClicked() {
-        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
-        entranceStudents++;
-        document.getElementById("entranceVal").innerHTML = entranceStudents;
-        let inputId = this.name;
-        document.getElementById(inputId).stepDown();
+        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);    //
+        entranceStudents++;  //put student back in entrance way instead of removing them    //
+        document.getElementById("entranceVal").innerHTML = entranceStudents;                //same as above without check bc student left square
+        let inputId = this.name;                                                            //
+        document.getElementById(inputId).stepDown();                                        //
     }
-    //This func is called when any plus button is pressed
+    //Add a student to student square on + button click
     function addStudentClicked() {
-        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
-        entranceStudents--;
-        document.getElementById("entranceVal").innerHTML = entranceStudents;
-        let inputId = this.name;
-        document.getElementById(inputId).stepUp();
-        someInput(inputId);
+        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);    //
+        entranceStudents--;                                                                 //
+        document.getElementById("entranceVal").innerHTML = entranceStudents;                // same as addInstructor
+        let inputId = this.name;                                                            //
+        document.getElementById(inputId).stepUp();                                          //
+        someInput(inputId);                                                                 //
     }
-    //This func is called when any minus button is pressed
+    //Remove a student to student square on - button click
     function removeStudentClicked() {
-        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
-        entranceStudents++;
-        document.getElementById("entranceVal").innerHTML = entranceStudents;
-        let inputId = this.name;
-        document.getElementById(inputId).stepDown();
+        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);    //
+        entranceStudents++;                                                                 //
+        document.getElementById("entranceVal").innerHTML = entranceStudents;                //same as removeInstructor
+        let inputId = this.name;                                                            //
+        document.getElementById(inputId).stepDown();                                        //
     }
 
-    //This func is called when any mask button is pressed
+    //Called when any mask button is pressed.
     function maskButtonClicked() {
+        //get and output container id to console
         let buttonId = this.id;
         console.log(buttonId);
+        //get and output container name to console
         let inputElm = document.getElementById(this.name);
         console.log(inputElm);
         let sendUrl = document.getElementById(inputElm.name).action;
         console.log(sendUrl)
+        //send the specific square that the mask button was clicked in
         if (buttonId.includes("instru")) {
             //Change the instuctor mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
@@ -255,11 +261,12 @@
             return;
         }
     }
-    //This func is called when any lysol button is pressed
+    //Called when any lysol button is pressed
     function lysolButtonClicked() {
         let buttonId = this.id;
         let inputElm = document.getElementById(this.name);
         let sendUrl = document.getElementById(inputElm.name).action;
+        //send which square the Lysol button was checked in
         if (buttonId.includes("instru")) {
             //Change the instuctor mask flag to true
             let data = "name=" + buttonId + "&" + "value=" + "I";
@@ -275,21 +282,23 @@
         }
     }
 
-    //This func is called when the start class button is pressed
+    //Called when the start class button is pressed
     function startClassClicked() {
+        //get name of the button that was clicked
         let buttonName = this.name;
+        //send data from clicked button to server to make the mask and lysol check
         let data = "name=" + buttonName + "&" + "value=" + "check";
         doAJAXsendForm("server.php",data);
         return
     }
-    //This func is called when the end class button is pressed
+    //Called when the end class button is pressed
     function endClassClicked() {
-        let buttonName = this.name;
-        let data = "name=" + buttonName + "&" + "value=" + "check";
-        doAJAXsendForm("server.php",data);
-        return;
+        let buttonName = this.name;                                     //
+        let data = "name=" + buttonName + "&" + "value=" + "check";     //same as above but end of class check
+        doAJAXsendForm("server.php",data);                              //
+        return;                                                         //
     }
-    //This func is called when the student enter button is pressed
+    //Called when the student enter button is pressed
     function studentEnterClicked() {
         //Should this also be done through a php POST request?
         let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
@@ -297,49 +306,56 @@
         document.getElementById("entranceVal").innerHTML = entranceStudents;
         //doAJAXsendForm();
     }
-    //This func is called when the student exit button is pressed
+    //Called when the student exit button is pressed
     function studentExitClicked() {
+        //send alert if sanitizer was not clicked before student tries to leave from room entrance
         if (sanitizerButton == false) {
             alert("Student did not sanitize!");
             return;
         }
-        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML);
-        entranceStudents--;
-        document.getElementById("entranceVal").innerHTML = entranceStudents;
-        sanitizerButton = false;
+        //if student has sanitized they are allowed to leave from the entranceway
+        let entranceStudents = Number(document.getElementById("entranceVal").innerHTML); //get amt of students in entrance
+        entranceStudents--;                                                              //reduce by 1
+        document.getElementById("entranceVal").innerHTML = entranceStudents;             //update amt of students in entrance
+        sanitizerButton = false;                                                         //reset check back to false
         //doAJAXsendForm();
     }
 
-    //This func sends the form data to the server file
+    //Sends the form data to the server file
     function doAJAXsendForm(sendUrl,data) {
-        request = new XMLHttpRequest();
-        let fullRequest = sendUrl + "?" + data;
+        request = new XMLHttpRequest();  //create new reqeust
+        let fullRequest = sendUrl + "?" + data; //request data
 
-        request.open("GET",fullRequest,true);
+        request.open("GET",fullRequest,true); //open request to server
 
+        //wait for server to have ready response
         request.onreadystatechange = function () {
             if (request.readyState == 4)
                 //return request;
                 my_callback();
                 return;
         }
-        request.send();
+        request.send(); //send request to server
     }
 
-    //This func handles any callback from the server file
+    //Handles any callback from the server file
     function my_callback() {
+        //if response from server is OK
         if (request.status == 200) {
+            //if the response from the server is an alert
             if (request.responseText.includes("alert(")) {
+                //add the alert to a new tag in the html so it can appear for the end user
                 let newElm = document.createElement("script");
                 newElm.innerText = request.responseText;
                 document.getElementById("alerts_div").appendChild(newElm);
                 //document.getElementById("classroom_script").append(request.responseText);
                 return;
-            }else {
+            }else {  //otherwise append the reponse to the end of the html body (usually for testing purposes)
                 document.getElementById("test").append(request.responseText);
             }
             //alert(request.responseText);
         }
+        //generic alert for if the server is not found (bad request etc.)
         else if (request.status=404) {
             alert("Server was not found: data returned is :\n"+request.responseText);
         }
