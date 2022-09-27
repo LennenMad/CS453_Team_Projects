@@ -274,7 +274,7 @@
             return;
         } else {
             //Grab the number of desk
-            let deskNum = buttonId.charAt(8);
+            let deskNum = buttonId.charAt(9);
             //Change the mask flag in maskButton array coresponding to the desk number
             let data = "name=" + buttonId + "&" + "value=" + deskNum;
             doAJAXsendForm(sendUrl,data);
