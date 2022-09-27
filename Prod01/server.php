@@ -44,6 +44,7 @@
             "I" => 0,
         );
     }
+    
     /*
     if (!isset($_SESSION['maskFlags'])) {
         $_SESSION['maskFlags'] = array(
