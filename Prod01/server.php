@@ -93,9 +93,9 @@
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($maskFlag != 1) {
                     print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
-                    if ($num = "I") {
+                    if ($num == "I") {
                         echo "Instructor is not properly wearing a mask!";
-                    } else if ($num = "Q") {
+                    } else if ($num == "Q") {
                         echo "Question Square is not properly wearing a mask!";
                     } else {
                         echo "Desk " . $num . " is not properly wearing a mask!";
@@ -120,7 +120,7 @@
         if (str_contains($rectVal,"check")) {
             foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
                 if ($lysolFlag != 1) {
-                    if ($num = "I") {
+                    if ($num == "I") {
                         echo "Instructor has not used their Lysol!";
                     }  else {
                         echo "Desk " . $num . " has not used their Lysol!";
