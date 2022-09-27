@@ -89,10 +89,10 @@
                     } else {
                         echo "alert('Desk " . $num . " is not properly wearing a mask!')";
                     }
-                    exit;
+                    //exit;
                 }
             }
-            exit;
+            //exit;
         } else {
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
                 if ($rectVal == $num) {
@@ -115,7 +115,7 @@
                     }  else {
                         echo "alert('Desk " . $num . " has not used their Lysol!')";
                     }
-                    exit;
+                    //exit;
                 }
             }
             exit;
