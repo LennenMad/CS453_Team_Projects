@@ -21,7 +21,7 @@
 
     //print_r(session_id());
     if (!session_id()) {
-        echo "No session. Making one... ";
+        //echo "No session. Making one... ";
         //$randId = rand(1,100);
         session_start();
         session_create_id();
@@ -89,7 +89,7 @@
                     } else {
                         echo "alert(Desk " . $num . " is not properly wearing a mask!)";
                     }
-                    //exit;
+                    exit;
                 }
             }
             exit;
@@ -115,7 +115,7 @@
                     }  else {
                         echo "alert(Desk " . $num . " has not used their Lysol!)";
                     }
-                    //exit;
+                    exit;
                 }
             }
             exit;
