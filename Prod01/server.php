@@ -20,6 +20,7 @@
     */
 
     if (!session_id()) {
+        echo "No session. Making one... ";
         session_start();
         $_SESSION['maskFlags'] = array(
             "1" => 0,
