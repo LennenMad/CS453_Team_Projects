@@ -64,7 +64,7 @@
     }
     */
 
-    print_r($_SESSION); //For debugging
+    var_dump($_SESSION); //For debugging
     
     $rectName = htmlspecialchars($_GET["name"]);
     $rectVal = htmlspecialchars($_GET["value"]);
