@@ -92,7 +92,7 @@
                     //echo "Lysol " . $num . " set to true.";
                     break;
                 } else if (str_contains($rectName, "Instru")) {
-                    $_SESSION['maskFlags']["I"] = '0';
+                    $_SESSION['lysolFlags']["I"] = '0';
                 }
             }
         }
