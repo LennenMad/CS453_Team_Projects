@@ -117,6 +117,7 @@
                     break;
                 }
             }
+            session_commit();
             exit;
         }
     } else if (str_contains($rectName,"Lysol")) {
@@ -142,6 +143,7 @@
                     break;
                 }
             }
+            session_commit();
             exit;
         }
     }
