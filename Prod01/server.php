@@ -81,18 +81,18 @@
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
             foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
-                if ($lysolFlag != '2') {
-                if ($maskFlag != '1') {
-                    //print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
-                    if ($num == "I") {
-                        echo "alert('Instructor is not properly wearing a mask!')";
-                    } else if ($num == "Q") {
-                        echo "alert('Question Square is not properly wearing a mask!')";
-                    } else {
-                        echo "alert('Desk " . $num . " is not properly wearing a mask!')";
+                if ($maskFlag != '2') {
+                    if ($maskFlag != '1') {
+                        //print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
+                        if ($num == "I") {
+                            echo "alert('Instructor is not properly wearing a mask!')";
+                        } else if ($num == "Q") {
+                            echo "alert('Question Square is not properly wearing a mask!')";
+                        } else {
+                            echo "alert('Desk " . $num . " is not properly wearing a mask!')";
+                        }
+                        exit;
                     }
-                    exit;
-                }
                 }
             }
             exit;
