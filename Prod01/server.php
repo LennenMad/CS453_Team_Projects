@@ -22,8 +22,8 @@
     if (!session_id()) {
         echo "No session. Making one... ";
         //$randId = rand(1,100);
-        session_create_id();
         session_start();
+        session_create_id();
         $_SESSION['maskFlags'] = array(
             "1" => 0,
             "2" => 0,
