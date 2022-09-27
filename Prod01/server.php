@@ -1,24 +1,4 @@
 <?php 
-    /*
-    $maskFlags = array(
-        "1" => 0,
-        "2" => 0,
-        "3" => 0,
-        "4" => 0,
-        "5" => 0,
-        "Q" => 0,
-        "I" => 0,
-    );
-    $lysolFlags = array(
-        "1" => 0,
-        "2" => 0,
-        "3" => 0,
-        "4" => 0,
-        "5" => 0,
-        "I" => 0,
-    );
-    */
-
     //print_r(session_id());
     if (!session_id()) {
         //echo "No session. Making one... ";
@@ -27,30 +7,6 @@
         session_create_id();
         //print_r(session_id());
     }
-    
-    /*
-    if (!isset($_SESSION['maskFlags'])) {
-        $_SESSION['maskFlags'] = array(
-            "1" => 0,
-            "2" => 0,
-            "3" => 0,
-            "4" => 0,
-            "5" => 0,
-            "Q" => 0,
-            "I" => 0,
-        );
-    }
-    if (!isset($_SESSION['lysolFlags'])) {
-        $_SESSION['lysolFlags'] = array(
-            "1" => 0,
-            "2" => 0,
-            "3" => 0,
-            "4" => 0,
-            "5" => 0,
-            "I" => 0,
-        );
-    }
-    */
 
     //var_dump($_SESSION); //For debugging
     //get name and value from request
