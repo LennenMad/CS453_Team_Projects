@@ -96,9 +96,9 @@
     } else if (str_contains($rectName,"Mask")) {
         //Check if all students have masks
         if (str_contains($rectVal,"check")) {
-            foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
+            foreach ($_SESSION[maskFlags] as $num => $maskFlag) {
                 if ($maskFlag != 1) {
-                    print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION['maskFlags'][$num] . " ");
+                    print_r(" " . $num . "=>" . $maskFlag . " " . $_SESSION[maskFlags][$num] . " ");
                     if ($num == "I") {
                         echo "Instructor is not properly wearing a mask!";
                     } else if ($num == "Q") {
@@ -111,10 +111,10 @@
             }
             exit;
         } else {
-            foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
+            foreach ($_SESSION[maskFlags] as $num => $maskFlag) {
                 if ($rectVal == $num) {
-                    $_SESSION['maskFlags'][$num] = 1;
-                    print_r(" " . $num . "=>" . $maskFlag . " As session:" . $_SESSION['maskFlags'][$num] . " ");
+                    $_SESSION[maskFlags][$num] = 1;
+                    print_r(" " . $num . "=>" . $maskFlag . " As session:" . $_SESSION[maskFlags][$num] . " ");
                     echo "Mask " . $num . " set to true.";
                     break;
                 }
