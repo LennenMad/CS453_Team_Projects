@@ -74,7 +74,17 @@
             } else {
                 echo "alert('Only the Instructor should be up front!')";
             }
+        } else if ($rectVal == 1){
+            foreach ($_SESSION['maskFlags'] as $num => $maskFlag) {
+                if (str_ends_with($rectName,$num)) {
+                    $_SESSION['maskFlags'][$num] = '0';
+                    //print_r(" " . $num . "=>" . $maskFlag . " As session:" . $_SESSION['maskFlags'][$num] . " ");
+                    //echo "Mask " . $num . " set to true.";
+                    break;
+                }
+            }
         }
+        
         exit;
     }
     if (str_contains($rectName,"Mask")) {
