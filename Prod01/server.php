@@ -83,6 +83,14 @@
                     break;
                 }
             }
+            foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
+                if (str_ends_with($rectName,$num)) {
+                    $_SESSION['lysolFlags'][$num] = '0';
+                    //echo " " . $num . "=>" . $lysolFlag . " " . $_SESSION['lysolFlags'][$num] . " ";
+                    //echo "Lysol " . $num . " set to true.";
+                    break;
+                }
+            }
         }
         
         exit;
@@ -124,14 +132,14 @@
         if (str_contains($rectVal,"check")) {
             foreach ($_SESSION['lysolFlags'] as $num => $lysolFlag) {
                 if ($lysolFlag != '2') {
-                if ($lysolFlag != '1') {
-                    if ($num == "I") {
-                        echo "alert('Instructor has not used their Lysol!')";
-                    }  else {
-                        echo "alert('Desk " . $num . " has not used their Lysol!')";
+                    if ($lysolFlag != '1') {
+                        if ($num == "I") {
+                            echo "alert('Instructor has not used their Lysol!')";
+                        }  else {
+                            echo "alert('Desk " . $num . " has not used their Lysol!')";
+                        }
+                        exit;
                     }
-                    exit;
-                }
                 }
             }
             exit;
