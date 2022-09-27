@@ -63,7 +63,7 @@
     }
     */
 
-    print_r($_SESSION['maskFlags']); //For debugging
+    print_r($_SESSION); //For debugging
     
     $rectName = htmlspecialchars($_GET["name"]);
     $rectVal = htmlspecialchars($_GET["value"]);
