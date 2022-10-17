@@ -15,6 +15,6 @@ Visit page at: https://lennenmad.github.io/CS453_Team_Projects/
 | Run Container | y |
 | Access Webpage | y |
 | Install Wireshark | y |
-| Upload index | n |
-| Install curl | n |
-| Install nmap | n |
+| Upload index | y |
+| Install curl | y |
+| Install nmap | y |
